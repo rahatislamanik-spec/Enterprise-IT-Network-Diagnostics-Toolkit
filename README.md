@@ -10,7 +10,7 @@
 
 ---
 
-| 9 PowerShell Scripts | 4 HTML Reports | 27 Diagnostic Files | 15 Screenshots |
+| 9 PowerShell Scripts | 8 HTML Reports | 27 Diagnostic Files | 15 Screenshots |
 |:---:|:---:|:---:|:---:|
 
 ---
