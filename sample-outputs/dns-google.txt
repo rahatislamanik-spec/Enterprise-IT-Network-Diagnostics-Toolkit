@@ -1,0 +1,26 @@
+
+; <<>> DiG 9.10.6 <<>> google.com ANY +noall +answer
+;; global options: +cmd
+google.com.		27	IN	SOA	ns1.google.com. dns-admin.google.com. 920115261 900 900 1800 60
+google.com.		17758	IN	TYPE65	\# 13 00010000010006026832026833
+google.com.		166	IN	AAAA	2607:f8b0:4023:1807::65
+google.com.		166	IN	AAAA	2607:f8b0:4023:1807::64
+google.com.		166	IN	AAAA	2607:f8b0:4023:1807::8a
+google.com.		166	IN	AAAA	2607:f8b0:4023:1807::71
+google.com.		266	IN	A	192.178.192.139
+google.com.		266	IN	A	192.178.192.100
+google.com.		266	IN	A	192.178.192.102
+google.com.		266	IN	A	192.178.192.113
+google.com.		266	IN	A	192.178.192.101
+google.com.		266	IN	A	192.178.192.138
+google.com.		60670	IN	NS	ns4.google.com.
+google.com.		60670	IN	NS	ns1.google.com.
+google.com.		60670	IN	NS	ns2.google.com.
+google.com.		60670	IN	NS	ns3.google.com.
+Server:		66.207.192.6
+Address:	66.207.192.6#53
+
+Non-authoritative answer:
+Name:	github.com
+Address: 140.82.114.4
+

@@ -1,0 +1,197 @@
+Wi-Fi:
+
+      Software Versions:
+          CoreWLAN: 16.0 (1657)
+          CoreWLANKit: 16.0 (1657)
+          Menu Extra: 1.0 (19150.2)
+          System Information: 15.0 (1502)
+          IO80211 Family: 12.0 (1200.13.1)
+          Diagnostics: 11.0 (1163)
+          AirPort Utility: 6.3.9 (639.29)
+      Interfaces:
+        en0:
+          Card Type: Wi-Fi  (0x14E4, 0x4378)
+          Firmware Version: wl0: Dec 18 2025 18:13:50 version 18.110.6.0.7.8.189 FWID 01-2a12ab25
+IO80211_driverkit-1561.3 "IO80211_driverkit-1561.3" Apr 18 2026 17:42:26
+          MAC Address: 92:8d:1e:f9:b8:72
+          Locale: Unknown
+          Country Code: CA
+          Supported PHY Modes: 802.11 a/b/g/n/ac/ax
+          Supported Channels: 1 (2GHz), 2 (2GHz), 3 (2GHz), 4 (2GHz), 5 (2GHz), 6 (2GHz), 7 (2GHz), 8 (2GHz), 9 (2GHz), 10 (2GHz), 11 (2GHz), 12 (2GHz), 13 (2GHz), 36 (5GHz), 40 (5GHz), 44 (5GHz), 48 (5GHz), 52 (5GHz), 56 (5GHz), 60 (5GHz), 64 (5GHz), 100 (5GHz), 104 (5GHz), 108 (5GHz), 112 (5GHz), 116 (5GHz), 120 (5GHz), 124 (5GHz), 128 (5GHz), 132 (5GHz), 136 (5GHz), 140 (5GHz), 144 (5GHz), 149 (5GHz), 153 (5GHz), 157 (5GHz), 161 (5GHz), 165 (5GHz)
+          Wake On Wireless: Supported
+          AirDrop: Supported
+          Auto Unlock: Supported
+          Status: Connected
+          Current Network Information:
+            <redacted>:
+              PHY Mode: 802.11ax
+              Channel: 157 (5GHz, 80MHz)
+              Country Code: CA
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -38 dBm / -85 dBm
+              Transmit Rate: 1200
+              MCS Index: 11
+          Other Local Wi-Fi Networks:
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 100 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -83 dBm / -93 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 6 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -50 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 11 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -80 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 10 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -75 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac
+              Channel: 104 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -83 dBm / -93 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n
+              Channel: 6 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -55 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac
+              Channel: 149 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -79 dBm / -94 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac
+              Channel: 44 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -91 dBm / -94 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 44 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -92 dBm / -94 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 60 (5GHz, 160MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -87 dBm / -93 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 1 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -76 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 11 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -75 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 100 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -91 dBm / -93 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 44 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -89 dBm / -94 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 1 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -83 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 153 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2/WPA3 Personal
+              Signal / Noise: -93 dBm / -94 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 157 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -38 dBm / -92 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 44 (5GHz, 160MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -70 dBm / -94 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 100 (5GHz, 80MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -78 dBm / -93 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 4 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -64 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 2 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -48 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 11 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -78 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n
+              Channel: 6 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -64 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11a/n/ac/ax
+              Channel: 44 (5GHz, 160MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -72 dBm / -94 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 11 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -66 dBm / -95 dBm
+            <redacted>:
+              PHY Mode: 802.11b/g/n/ax
+              Channel: 11 (2GHz, 20MHz)
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -75 dBm / -95 dBm
+        awdl0:
+          MAC Address: 2a:fd:e3:de:96:69
+          Supported Channels: 1 (2GHz), 2 (2GHz), 3 (2GHz), 4 (2GHz), 5 (2GHz), 6 (2GHz), 7 (2GHz), 8 (2GHz), 9 (2GHz), 10 (2GHz), 11 (2GHz), 12 (2GHz), 13 (2GHz), 36 (5GHz), 40 (5GHz), 44 (5GHz), 48 (5GHz), 52 (5GHz), 56 (5GHz), 60 (5GHz), 64 (5GHz), 100 (5GHz), 104 (5GHz), 108 (5GHz), 112 (5GHz), 116 (5GHz), 120 (5GHz), 124 (5GHz), 128 (5GHz), 132 (5GHz), 136 (5GHz), 140 (5GHz), 144 (5GHz), 149 (5GHz), 153 (5GHz), 157 (5GHz), 161 (5GHz), 165 (5GHz)
+          Current Network Information:
+              Network Type: Infrastructure
+
