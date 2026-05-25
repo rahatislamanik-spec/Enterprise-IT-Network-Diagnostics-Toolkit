@@ -36,13 +36,13 @@ function Parse-TracerouteLine {
         $rttAll    = [regex]::Matches($rest, '([\d.]+)\s+ms')
 
         $ip   = if ($ipMatch.Success)   { $ipMatch.Groups[1].Value   } else { "—" }
-        $host = if ($hostMatch.Success) { $hostMatch.Groups[1].Value } else { "—" }
+        $hostname = if ($hostMatch.Success) { $hostMatch.Groups[1].Value } else { "—" }
         $rtts = $rttAll | ForEach-Object { $_.Groups[1].Value + " ms" }
         while ($rtts.Count -lt 3) { $rtts += "—" }
 
         return [PSCustomObject]@{
             Hop    = $hop
-            Host   = $host
+            Host   = $hostname
             IP     = $ip
             RTT1   = $rtts[0]
             RTT2   = $rtts[1]
