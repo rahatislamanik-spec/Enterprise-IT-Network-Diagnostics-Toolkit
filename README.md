@@ -102,3 +102,31 @@ Cloud Computing & Network Administration · George Brown College · May 2026
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/rahatislamanik)
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-181717?style=flat&logo=github)](https://github.com/rahatislamanik-spec)
+
+## 📸 Visual Evidence
+
+### PowerShell Execution
+![PowerShell Running](Screenshots/02-powershell-running.png)
+
+### Diagnostic Outputs
+![DNS Output](Screenshots/03-dns-output.png)
+![Connectivity Test](Screenshots/04-connectivity-output.png)
+![Port Scan](Screenshots/05-port-scan.png)
+
+### Professional Reports
+![HTML Report](Screenshots/07-html-browser.png)
+
+### Security Auditing
+![Rogue Device Detection](Screenshots/09-rogue-detection.png)
+![ARP Scan](Screenshots/10-arp-scan.png)
+
+### Version Control
+![Git History](Screenshots/11-git-history.png)
+
+### GitHub Repository
+![GitHub Repo](Screenshots/12-github-repo.png)
+![Sample Outputs](Screenshots/13-sample-outputs.png)
+![Security Files](Screenshots/14-security-files.png)
+
+### Project Organization
+![Project Structure](Screenshots/15-project-structure.png)
