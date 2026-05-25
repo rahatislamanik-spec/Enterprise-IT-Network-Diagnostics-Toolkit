@@ -2,15 +2,15 @@
 
 ### PowerShell · macOS Diagnostics · HTML Reporting · Git · Zero Paid Tools
 
-**Md Rahat Islam Anik · Portfolio Project · 2025**
+**Md Rahat Islam Anik · Portfolio Project · 2026**
 
-[![Live Project](https://img.shields.io/badge/Live%20Project-View%20Now-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)](https://rahatislamanik-spec.github.io/Enterprise-IT-HealthCheck-Toolkit/)
+[![Live Project](https://img.shields.io/badge/Live%20Project-View%20Now-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)](https://rahatislamanik-spec.github.io/Enterprise-IT-Network-Diagnostics-Toolkit/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-rahatislamanik-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rahatislamanik)
 [![GitHub](https://img.shields.io/badge/GitHub-rahatislamanik--spec-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rahatislamanik-spec)
 
 ---
 
-| 1 Automation Script | 1 HTML Report | 2 Git Commits | 0 Paid Tools |
+| 9 PowerShell Scripts | 4 HTML Reports | 12+ Git Commits | 27 Diagnostic Files |
 |:---:|:---:|:---:|:---:|
 
 ---
@@ -91,7 +91,7 @@ The project is committed and pushed to GitHub with a clean structure — demonst
 
 The full project — with script documentation, run evidence, generated report, and Git workflow screenshots — is published at:
 
-**[rahatislamanik-spec.github.io/Enterprise-IT-HealthCheck-Toolkit](https://rahatislamanik-spec.github.io/Enterprise-IT-HealthCheck-Toolkit/)**
+**[rahatislamanik-spec.github.io/Enterprise-IT-Network-Diagnostics-Toolkit](https://rahatislamanik-spec.github.io/Enterprise-IT-Network-Diagnostics-Toolkit/)**
 
 ---
 
