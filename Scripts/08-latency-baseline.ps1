@@ -30,7 +30,7 @@ Write-Host ""
 function Get-LatencyStats {
     param([string]$HostName, [int]$Count, [int]$Timeout)
 
-    $raw = & ping -c $Count -t 5 $HostName 2>&1
+    $raw = & ping -c $Count $HostName 2>&1
     $output = $raw -join "`n"
 
     # Individual RTT values
