@@ -1,6 +1,6 @@
 # Enterprise IT Network Diagnostics Toolkit
 
-### PowerShell · macOS Diagnostics · HTML Reporting · Git · Zero Paid Tools
+### PowerShell · Network Diagnostics · Security Auditing · HTML Reporting · macOS · Git
 
 **Md Rahat Islam Anik · Portfolio Project · 2026**
 
@@ -10,61 +10,76 @@
 
 ---
 
-| 9 PowerShell Scripts | 4 HTML Reports | 12+ Git Commits | 27 Diagnostic Files |
+| 9 PowerShell Scripts | 4 HTML Reports | 27 Diagnostic Files | 15 Screenshots |
 |:---:|:---:|:---:|:---:|
 
 ---
 
 ## The Problem
 
-In real IT support, the first few minutes of a troubleshooting call matter. A technician often needs to quickly understand the device name, logged-in user, OS version, disk usage, IP address, gateway, DNS configuration, and basic connectivity — before diagnosing anything.
+Network issues account for the majority of IT helpdesk tickets. Without structured diagnostics, technicians run commands one by one — results scattered, nothing documented, nothing repeatable.
 
-Without automation, that's a dozen manual commands run one by one, results scattered across a terminal window, nothing documented, nothing repeatable.
+**Manual checks waste time.** Ad-hoc troubleshooting creates inconsistency and slows down triage.
 
-**Manual checks waste time.** Running diagnostics one by one creates inconsistency and slows down triage.
+**Reports make support visible.** Clean HTML output creates evidence for tickets, escalation notes, and future comparison.
 
-**Reports make support visible.** A clean HTML output creates evidence for tickets, escalation notes, documentation, and future comparison.
+**Automation shows maturity.** This toolkit demonstrates the mindset of an IT specialist who builds repeatable processes — not just reacts to incidents.
 
-**Automation shows maturity.** This script demonstrates the mindset of an IT specialist who can reduce repeat work — not just react to tickets.
-
-**GitHub proves delivery.** The project is documented, committed, pushed, and structured like a real technical portfolio asset.
+**Security auditing is proactive.** Rogue device detection and ARP monitoring surface threats before they escalate.
 
 ---
 
 ## The Solution
 
-A lightweight PowerShell diagnostic workflow that runs once and produces a professional HTML report — ready for ticket documentation, escalation, or handoff.
+A multi-script PowerShell diagnostic toolkit that runs structured network assessments and produces professional HTML reports — ready for ticket documentation, escalation, or handoff.
 
 ```
-MacBook Air                PowerShell Script           Output
-─────────────              ──────────────────          ──────────────────────
-Local endpoint      →      System information    →     HTML Report
-IT support scenario        Disk + network checks        Ticket evidence
-                           Ping test                    Documentation ready
-                                                        ↓
-                                                   GitHub Repository
-                                                   Portfolio proof
-                                                   Version control
+MacBook Air              PowerShell Scripts           Output
+─────────────            ──────────────────           ──────────────────────
+Network endpoint  →      DNS Resolution         →     HTML Report
+IT support call          Connectivity Tests           Ticket evidence
+Security audit           Port Scanning                Documentation ready
+                         Wi-Fi Diagnostics            Sample output files
+                         SSL/TLS Check                Screenshots
+                         Rogue Device Scan             ↓
+                         ARP Monitoring          GitHub Repository
+                         Traceroute Analysis     Portfolio proof
+                         Latency Baseline        Version control
 ```
 
 ---
 
-## What Was Built
+## Scripts
 
-**System Diagnostics**
-The script captures core device information: hostname, logged-in user, operating system version — the baseline context every IT support call starts with.
+| # | Script | What It Diagnoses |
+|---|---|---|
+| 01 | `01-dns-diagnostics.ps1` | DNS resolution, server check, reverse lookups, failure detection |
+| 02 | `02-network-connectivity.ps1` | Gateway reachability, internet connectivity, packet loss |
+| 03 | `03-port-service-check.ps1` | Critical enterprise ports (HTTP/S, RDP, SMB, SMTP, LDAP, SSH) |
+| 04 | `04-wifi-diagnostics.ps1` | SSID, signal strength, RSSI, SNR, channel, band, nearby networks |
+| 05 | `05-network-adapter-health.ps1` | All interfaces, IP/MAC addresses, MTU, routing table |
+| 06 | `06-traceroute-analysis.ps1` | Hop-by-hop path analysis, latency per hop, timeout detection |
+| 07 | `07-ssl-cert-check.ps1` | SSL/TLS certificate expiry, issuer, protocol version |
+| 08 | `08-latency-baseline.ps1` | Extended ping, jitter, packet loss %, RTT sparklines |
+| 09 | `system-health-check.ps1` | Hostname, OS version, disk usage, IP, DNS, ping test |
 
-**Disk & Network Health**
-Disk usage, IP address, default gateway, and DNS configuration are all captured in a single run. No manual `ifconfig` or `df -h` — one script, everything surfaced.
+All scripts run on **macOS PowerShell 7+** and generate **professional HTML reports**.
 
-**Ping Test**
-A basic connectivity verification is built into the run — confirming the endpoint can reach the network before any application-layer troubleshooting begins.
+---
 
-**HTML Report Output**
-All captured data is written to a clean, readable HTML report inside the project folder. The output is structured for readability — appropriate for attaching to a ticket, including in escalation notes, or storing for future comparison.
+## Sample Outputs (27 Files)
 
-**Version Control**
-The project is committed and pushed to GitHub with a clean structure — demonstrating not just the ability to write a diagnostic script, but to document and deliver it like a professional portfolio asset.
+Real diagnostic data collected from a live network environment — sanitized for privacy.
+
+**Network Configuration:** `ifconfig-macos.txt` · `routing-table.txt` · `arp-table.txt` · `gateway-info.txt` · `my-ip.txt` · `interface-traffic.txt`
+
+**DNS Analysis:** `dns-google.txt` · `dns-resolver-config.txt`
+
+**Performance Metrics:** `latency-jitter.txt` · `bandwidth-test.txt` · `traceroute.txt` · `mtu-test.txt`
+
+**Protocol Statistics:** `tcp-ip-statistics.txt` · `multicast-groups.txt` · `active-connections.txt`
+
+**Security Audits:** `rogue-device-report.txt` · `rogue-detection.txt` · `rogue-devices-arp.txt` · `mac-vendor-lookup.txt` · `gateway-port-scan.txt` · `network-scan.txt` · `all-network-devices.txt` · `active-network-devices.txt` · `mac-addresses.txt` · `port-53-test.txt` · `broadcast-devices.txt` · `nmap-device-discovery.txt`
 
 ---
 
@@ -72,24 +87,24 @@ The project is committed and pushed to GitHub with a clean structure — demonst
 
 | Category | Tools |
 |---|---|
-| Scripting | PowerShell |
-| Platform | macOS (cross-platform compatible) |
-| Reporting | HTML file output |
+| Scripting | PowerShell 7+ (cross-platform) |
+| Platform | macOS · Windows · Linux compatible |
+| Reporting | HTML file output (self-contained) |
+| Network Tools | ping · traceroute · ifconfig · arp · nc · dig · nslookup · nmap |
+| Security | ARP monitoring · MAC vendor OSINT · port scanning |
 | Version Control | Git · GitHub |
-| Development | VS Code |
+| Deployment | GitHub Pages |
 | Cost | $0 |
 
 ---
 
 ## Skills Demonstrated
 
-`PowerShell Scripting` · `IT Diagnostics Automation` · `System Information Capture` · `Network Health Checks` · `HTML Report Generation` · `Git Version Control` · `IT Support Documentation` · `Troubleshooting Workflows`
+`PowerShell Scripting` · `Network Diagnostics` · `DNS Troubleshooting` · `Port Scanning` · `Wi-Fi Analysis` · `SSL/TLS Certificate Management` · `Latency & Jitter Analysis` · `Rogue Device Detection` · `ARP Monitoring` · `MAC Vendor OSINT` · `HTML Report Generation` · `Git Version Control` · `IT Support Documentation` · `Security Auditing` · `Cross-Platform Automation`
 
 ---
 
 ## Live Project
-
-The full project — with script documentation, run evidence, generated report, and Git workflow screenshots — is published at:
 
 **[rahatislamanik-spec.github.io/Enterprise-IT-Network-Diagnostics-Toolkit](https://rahatislamanik-spec.github.io/Enterprise-IT-Network-Diagnostics-Toolkit/)**
 
@@ -103,9 +118,12 @@ Cloud Computing & Network Administration · George Brown College · May 2026
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/rahatislamanik)
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-181717?style=flat&logo=github)](https://github.com/rahatislamanik-spec)
 
-## 📸 Visual Evidence
+---
+
+## Visual Evidence
 
 ### PowerShell Execution
+![PowerShell Start](Screenshots/01-powershell-start.png)
 ![PowerShell Running](Screenshots/02-powershell-running.png)
 
 ### Diagnostic Outputs
@@ -113,20 +131,22 @@ Cloud Computing & Network Administration · George Brown College · May 2026
 ![Connectivity Test](Screenshots/04-connectivity-output.png)
 ![Port Scan](Screenshots/05-port-scan.png)
 
-### Professional Reports
-![HTML Report](Screenshots/07-html-browser.png)
+### HTML Reports
+![HTML Report](Screenshots/06-html-report.png)
+![HTML Browser](Screenshots/07-html-browser.png)
+
+### Network Commands
+![Network Commands](Screenshots/08-network-cmds.png)
 
 ### Security Auditing
 ![Rogue Device Detection](Screenshots/09-rogue-detection.png)
 ![ARP Scan](Screenshots/10-arp-scan.png)
 
-### Version Control
+### Version Control & Repository
 ![Git History](Screenshots/11-git-history.png)
-
-### GitHub Repository
 ![GitHub Repo](Screenshots/12-github-repo.png)
+
+### Project Structure
 ![Sample Outputs](Screenshots/13-Sample-Outputs.png)
 ![Security Files](Screenshots/14-security-files.png)
-
-### Project Organization
 ![Project Structure](Screenshots/15-project-structure.png)
