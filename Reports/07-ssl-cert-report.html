@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>SSL Certificate Check — Enterprise IT Network Diagnostics Toolkit</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #1e293b; padding: 24px; }
+  .header { background: linear-gradient(135deg, #0078d4, #005a9e); color: white; padding: 26px 30px; border-radius: 12px; margin-bottom: 24px; }
+  .header h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .header p  { opacity: 0.85; font-size: 0.875rem; }
+  .script-tag { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 2px 12px; font-size: 0.78rem; margin-bottom: 10px; }
+  .summary { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: white; border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); text-align: center; }
+  .stat-value { font-size: 2rem; font-weight: 700; color: #0078d4; }
+  .stat-label { font-size: 0.8rem; color: #64748b; margin-top: 4px; }
+  .section { background: white; border-radius: 10px; padding: 22px; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 20px; }
+  .section h2 { font-size: 1rem; color: #0078d4; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  th { background: #f8fafc; color: #475569; font-weight: 600; padding: 10px 14px; text-align: left; border-bottom: 2px solid #e2e8f0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fafc; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; color: white; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; font-size: 0.8rem; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .footer { text-align: center; font-size: 0.75rem; color: #94a3b8; margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="script-tag">Script 07 of 08</div>
+  <h1>SSL/TLS Certificate Check Report</h1>
+  <p>Generated: 2026-05-25 15:49:57 &nbsp;|&nbsp; Author: Md Rahat Islam Anik &nbsp;|&nbsp; Enterprise IT Network Diagnostics Toolkit</p>
+</div>
+
+<div class="summary">
+  <div class="stat-card"><div class="stat-value">8</div><div class="stat-label">Domains Checked</div></div>
+  <div class="stat-card"><div class="stat-value" style="color:#45d48a">8</div><div class="stat-label">Valid</div></div>
+  <div class="stat-card"><div class="stat-value" style="color:#f2c86d">0</div><div class="stat-label">Expiring Soon</div></div>
+  <div class="stat-card"><div class="stat-value" style="color:#ff6b6b">0</div><div class="stat-label">Critical</div></div>
+  <div class="stat-card"><div class="stat-value" style="color:#dc2626">0</div><div class="stat-label">Expired</div></div>
+</div>
+
+<div class="section">
+  <h2>Certificate Results</h2>
+  <div class="legend">
+    <div class="legend-item"><div class="dot" style="background:#45d48a"></div> Valid (&gt;30 days)</div>
+    <div class="legend-item"><div class="dot" style="background:#f2c86d"></div> Warning (&lt;30 days)</div>
+    <div class="legend-item"><div class="dot" style="background:#ff6b6b"></div> Critical (&lt;14 days)</div>
+    <div class="legend-item"><div class="dot" style="background:#dc2626"></div> Expired</div>
+    <div class="legend-item"><div class="dot" style="background:#94a3b8"></div> Error / Unreachable</div>
+  </div>
+  <table>
+    <thead><tr><th>Domain</th><th>Status</th><th>Days Remaining</th><th>Expiry Date</th><th>Valid From</th><th>Protocol</th><th>Issuer</th></tr></thead>
+    <tbody><tr>
+      <td><strong>google.com</strong></td>
+      <td><span class='badge' style='background:#45d48a'>VALID</span></td>
+      <td>66</td>
+      <td>2026-07-30</td>
+      <td>2026-05-07</td>
+      <td style='font-size:0.8rem'>Tls12</td>
+      <td style='font-size:0.78rem;color:#64748b'>WR2, Google Trust Services, C=US</td>
+    </tr><tr>
+      <td><strong>microsoft.com</strong></td>
+      <td><span class='badge' style='background:#45d48a'>VALID</span></td>
+      <td>167</td>
+      <td>2026-11-08</td>
+      <td>2026-05-12</td>
+      <td style='font-size:0.8rem'>Tls12</td>
+      <td style='font-size:0.78rem;color:#64748b'>Microsoft TLS G2 RSA CA OCSP 16, Microsoft Corporation, C=US</td>
+    </tr><tr>
+      <td><strong>github.com</strong></td>
+      <td><span class='badge' style='background:#45d48a'>VALID</span></td>
+      <td>69</td>
+      <td>2026-08-02</td>
+      <td>2026-05-04</td>
+      <td style='font-size:0.8rem'>Tls12</td>
+      <td style='font-size:0.78rem;color:#64748b'>Sectigo Public Server Authentication CA DV E36, Sectigo Limited, C=GB</td>
+    </tr><tr>
+      <td><strong>office365.com</strong></td>
+      <td><span class='badge' style='background:#45d48a'>VALID</span></td>
+      <td>167</td>
+      <td>2026-11-08</td>
+      <td>2026-05-12</td>
+      <td style='font-size:0.8rem'>Tls12</td>
+      <td style='font-size:0.78rem;color:#64748b'>Microsoft TLS G2 RSA CA OCSP 02, Microsoft Corporation, C=US</td>
+    </tr><tr>
+      <td><strong>cloudflare.com</strong></td>
+      <td><span class='badge' style='background:#45d48a'>VALID</span></td>
+      <td>75</td>
+      <td>2026-08-08</td>
+      <td>2026-05-10</td>
+      <td style='font-size:0.8rem'>Tls12</td>
+      <td style='font-size:0.78rem;color:#64748b'>WE1, Google Trust Services, C=US</td>
+    </tr><tr>
+      <td><strong>apple.com</strong></td>
+      <td><span class='badge' style='background:#45d48a'>VALID</span></td>
+      <td>52</td>
+      <td>2026-07-16</td>
+      <td>2026-04-23</td>
+      <td style='font-size:0.8rem'>Tls12</td>
+      <td style='font-size:0.78rem;color:#64748b'>Apple Public EV Server ECC CA 1 - G1, Apple Inc., C=US</td>
+    </tr><tr>
+      <td><strong>linkedin.com</strong></td>
+      <td><span class='badge' style='background:#45d48a'>VALID</span></td>
+      <td>117</td>
+      <td>2026-09-19</td>
+      <td>2026-03-18</td>
+      <td style='font-size:0.8rem'>Tls12</td>
+      <td style='font-size:0.78rem;color:#64748b'>DigiCert Global G2 TLS RSA SHA256 2020 CA1, DigiCert Inc, C=US</td>
+    </tr><tr>
+      <td><strong>amazon.com</strong></td>
+      <td><span class='badge' style='background:#45d48a'>VALID</span></td>
+      <td>177</td>
+      <td>2026-11-18</td>
+      <td>2026-05-04</td>
+      <td style='font-size:0.8rem'>Tls12</td>
+      <td style='font-size:0.78rem;color:#64748b'>GeoTrust TLS RSA CA G1, OU=www.digicert.com, DigiCert Inc, C=US</td>
+    </tr></tbody>
+  </table>
+</div>
+
+<div class="footer">Enterprise IT Network Diagnostics Toolkit &nbsp;·&nbsp; Md Rahat Islam Anik &nbsp;·&nbsp; 2026-05-25 15:49:57</div>
+</body>
+</html>

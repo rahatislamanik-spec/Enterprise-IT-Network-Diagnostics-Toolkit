@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Network Adapter Health — Enterprise IT Network Diagnostics Toolkit</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #1e293b; padding: 24px; }
+  .header { background: linear-gradient(135deg, #0078d4, #005a9e); color: white; padding: 26px 30px; border-radius: 12px; margin-bottom: 24px; }
+  .header h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .header p  { opacity: 0.85; font-size: 0.875rem; }
+  .script-tag { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 2px 12px; font-size: 0.78rem; margin-bottom: 10px; }
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: white; border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); text-align: center; }
+  .stat-value { font-size: 2rem; font-weight: 700; color: #0078d4; }
+  .stat-label { font-size: 0.8rem; color: #64748b; margin-top: 4px; }
+  .section { background: white; border-radius: 10px; padding: 22px; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 20px; }
+  .section h2 { font-size: 1rem; color: #0078d4; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 16px; }
+  .env-row { display: flex; gap: 32px; font-size: 0.875rem; }
+  .env-item { display: flex; flex-direction: column; gap: 2px; }
+  .env-label { font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
+  .env-value { color: #1e293b; font-weight: 500; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  th { background: #f8fafc; color: #475569; font-weight: 600; padding: 10px 14px; text-align: left; border-bottom: 2px solid #e2e8f0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fafc; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; color: white; }
+  pre { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px; border-radius: 6px; font-size: 0.78rem; overflow-x: auto; white-space: pre; margin: 0; }
+  .footer { text-align: center; font-size: 0.75rem; color: #94a3b8; margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="script-tag">Script 05 of 08</div>
+  <h1>Network Adapter Health Report</h1>
+  <p>Generated: 2026-05-25 15:22:43 &nbsp;|&nbsp; Author: Md Rahat Islam Anik &nbsp;|&nbsp; Enterprise IT Network Diagnostics Toolkit</p>
+</div>
+
+<div class="summary">
+  <div class="stat-card"><div class="stat-value">13</div><div class="stat-label">Interfaces</div></div>
+  <div class="stat-card"><div class="stat-value" style="color:#45d48a">13</div><div class="stat-label">Active</div></div>
+  <div class="stat-card"><div class="stat-value" style="color:#94a3b8">0</div><div class="stat-label">Inactive</div></div>
+  <div class="stat-card"><div class="stat-value">2</div><div class="stat-label">With IP</div></div>
+</div>
+
+<div class="section">
+  <h2>Environment</h2>
+  <div class="env-row">
+    <div class="env-item"><span class="env-label">Default Gateway</span><span class="env-value">10.88.111.254</span></div>
+    <div class="env-item"><span class="env-label">Interfaces Found</span><span class="env-value">13</span></div>
+    <div class="env-item"><span class="env-label">Scan Time</span><span class="env-value">2026-05-25 15:22:43</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Interface Details</h2>
+  <table>
+    <thead><tr><th>Interface</th><th>Status</th><th>IPv4</th><th>IPv6</th><th>MAC Address</th><th>MTU</th><th>Media</th></tr></thead>
+    <tbody><tr>
+      <td><strong>lo0</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td><strong>127.0.0.1</strong></td>
+      <td>::1</td>
+      <td>—</td>
+      <td>16384</td>
+      <td style='font-size:0.78rem;color:#64748b'>—</td>
+    </tr><tr>
+      <td><strong>en3</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>—</td>
+      <td>ca:3b:9a:1e:04:91</td>
+      <td>1500</td>
+      <td style='font-size:0.78rem;color:#64748b'>none</td>
+    </tr><tr>
+      <td><strong>en4</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>—</td>
+      <td>ca:3b:9a:1e:04:92</td>
+      <td>1500</td>
+      <td style='font-size:0.78rem;color:#64748b'>none</td>
+    </tr><tr>
+      <td><strong>en1</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>—</td>
+      <td>36:da:1a:c5:ca:00</td>
+      <td>1500</td>
+      <td style='font-size:0.78rem;color:#64748b'>autoselect <full-duplex></td>
+    </tr><tr>
+      <td><strong>en2</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>—</td>
+      <td>36:da:1a:c5:ca:04</td>
+      <td>1500</td>
+      <td style='font-size:0.78rem;color:#64748b'>autoselect <full-duplex></td>
+    </tr><tr>
+      <td><strong>bridge0</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>—</td>
+      <td>36:da:1a:c5:ca:00</td>
+      <td>1500</td>
+      <td style='font-size:0.78rem;color:#64748b'><unknown type></td>
+    </tr><tr>
+      <td><strong>en0</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td><strong>10.88.111.3</strong></td>
+      <td>fe80::1c57:884f:d898:d0a6</td>
+      <td>92:8d:1e:f9:b8:72</td>
+      <td>1500</td>
+      <td style='font-size:0.78rem;color:#64748b'>autoselect</td>
+    </tr><tr>
+      <td><strong>utun0</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>fe80::111f:b5a5:997f:8d21</td>
+      <td>—</td>
+      <td>1380</td>
+      <td style='font-size:0.78rem;color:#64748b'>—</td>
+    </tr><tr>
+      <td><strong>utun1</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>fe80::b89e:523:cfe:d432</td>
+      <td>—</td>
+      <td>2000</td>
+      <td style='font-size:0.78rem;color:#64748b'>—</td>
+    </tr><tr>
+      <td><strong>utun2</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>fe80::ce81:b1c:bd2c:69e</td>
+      <td>—</td>
+      <td>1000</td>
+      <td style='font-size:0.78rem;color:#64748b'>—</td>
+    </tr><tr>
+      <td><strong>utun3</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>fe80::5c0e:6cbb:8a6a:fe3</td>
+      <td>—</td>
+      <td>1500</td>
+      <td style='font-size:0.78rem;color:#64748b'>—</td>
+    </tr><tr>
+      <td><strong>utun4</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>fe80::422f:8d18:5a9a:6455</td>
+      <td>—</td>
+      <td>1380</td>
+      <td style='font-size:0.78rem;color:#64748b'>—</td>
+    </tr><tr>
+      <td><strong>utun5</strong></td>
+      <td><span class='badge' style='background:#45d48a'>ACTIVE</span></td>
+      <td>—</td>
+      <td>fe80::46e4:af64:a963:2c2e</td>
+      <td>—</td>
+      <td>1380</td>
+      <td style='font-size:0.78rem;color:#64748b'>—</td>
+    </tr></tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Routing Table (summary)</h2>
+  <pre>Routing tables
+
+Internet:
+Destination        Gateway            Flags               Netif Expire
+default            10.88.111.254      UGScg                 en0       
+10.88.111/24       link#11            UCS                   en0      !
+10.88.111.3/32     link#11            UCS                   en0      !
+10.88.111.3        92:8d:1e:f9:b8:72  UHLWI                 lo0       
+10.88.111.25       aa:5b:d0:d0:1f:96  UHLWI                 en0    897
+10.88.111.254/32   link#11            UCS                   en0      !
+10.88.111.254      12:2:71:e4:db:5d   UHLWIir               en0   1157
+10.88.111.255      ff:ff:ff:ff:ff:ff  UHLWbI                en0      !
+127                127.0.0.1          UCS                   lo0       
+127.0.0.1          127.0.0.1          UH                    lo0       
+169.254            link#11            UCS                   en0      !
+224.0.0/4          link#11            UmCS                  en0      !
+224.0.0.251        1:0:5e:0:0:fb      UHmLWI                en0       
+255.255.255.255/32 link#11            UCS                   en0      !
+
+Internet6:
+Destination                             Gateway                                 Flags               Netif Expire
+default                                 fe80::%utun0                            UGcIg               utun0       
+default                                 fe80::%utun1                            UGcIg               utun1       
+default                                 fe80::%utun2                            UGcIg               utun2       
+default                                 fe80::%utun3                            UGcIg               utun3       </pre>
+</div>
+
+<div class="footer">Enterprise IT Network Diagnostics Toolkit &nbsp;·&nbsp; Md Rahat Islam Anik &nbsp;·&nbsp; 2026-05-25 15:22:43</div>
+</body>
+</html>
