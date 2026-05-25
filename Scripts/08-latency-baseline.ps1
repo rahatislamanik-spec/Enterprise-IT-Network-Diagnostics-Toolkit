@@ -28,9 +28,9 @@ Write-Host ""
 
 # ── Run Extended Ping ──────────────────────────────────────────────────────
 function Get-LatencyStats {
-    param([string]$Host, [int]$Count, [int]$Timeout)
+    param([string]$HostName, [int]$Count, [int]$Timeout)
 
-    $raw = & ping -c $Count -W $Timeout $Host 2>&1
+    $raw = & ping -c $Count -W $Timeout $HostName 2>&1
     $output = $raw -join "`n"
 
     # Individual RTT values
@@ -92,7 +92,7 @@ function Get-LatencyStats {
 $results = @()
 foreach ($t in $targets) {
     Write-Host "Testing $($t.Label) ($($t.Host)) — $packetCount packets..." -ForegroundColor Yellow
-    $stats = Get-LatencyStats -Host $t.Host -Count $packetCount -Timeout $timeout
+    $stats = Get-LatencyStats -HostName $t.Host -Count $packetCount -Timeout $timeout
     $stats | Add-Member -NotePropertyName Label -NotePropertyValue $t.Label
     $results += $stats
 
