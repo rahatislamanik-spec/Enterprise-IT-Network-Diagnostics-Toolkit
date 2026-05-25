@@ -125,7 +125,7 @@ Cloud Computing & Network Administration · George Brown College · May 2026
 
 ### GitHub Repository
 ![GitHub Repo](Screenshots/12-github-repo.png)
-![Sample Outputs](Screenshots/13-sample-outputs.png)
+![Sample Outputs](Screenshots/13-Sample-Outputs.png)
 ![Security Files](Screenshots/14-security-files.png)
 
 ### Project Organization
