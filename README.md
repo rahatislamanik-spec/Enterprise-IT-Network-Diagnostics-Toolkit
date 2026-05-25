@@ -1,4 +1,4 @@
-# Enterprise IT HealthCheck Toolkit
+# Enterprise IT Network Diagnostics Toolkit
 
 ### PowerShell · macOS Diagnostics · HTML Reporting · Git · Zero Paid Tools
 
