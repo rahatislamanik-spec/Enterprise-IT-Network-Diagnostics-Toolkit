@@ -183,7 +183,7 @@ $report = @"
 <body>
 
 <div class="header">
-  <div class="script-tag">Script 08 of 08</div>
+  <div class="script-tag">Script 08 of 09</div>
   <h1>Latency Baseline &amp; Jitter Analysis Report</h1>
   <p>Generated: $timestamp &nbsp;|&nbsp; $packetCount packets per target &nbsp;|&nbsp; Md Rahat Islam Anik &nbsp;|&nbsp; Enterprise IT Network Diagnostics Toolkit</p>
 </div>

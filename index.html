@@ -128,9 +128,9 @@
   <p>A multi-script PowerShell toolkit for enterprise network diagnostics, security auditing, and automated HTML reporting — built for real IT support workflows.</p>
   <div class="hero-badges">
     <span class="badge-pill">PowerShell 7+</span>
-    <span class="badge-pill">macOS · Cross-Platform</span>
+    <span class="badge-pill">macOS · PowerShell 7+</span>
     <span class="badge-pill">DNS · Connectivity · Ports · Wi-Fi · SSL</span>
-    <span class="badge-pill">Rogue Device Detection</span>
+    <span class="badge-pill">ARP Device Review</span>
     <span class="badge-pill">HTML Reports</span>
     <span class="badge-pill">$0 Cost</span>
   </div>
@@ -162,7 +162,7 @@
           <li>Results scattered across terminal</li>
           <li>Nothing documented for tickets</li>
           <li>No repeatable process</li>
-          <li>Rogue devices go undetected</li>
+          <li>Unknown devices are harder to review</li>
           <li>Cert expiry caught too late</li>
           <li>No baseline for comparison</li>
         </ul>
@@ -174,7 +174,7 @@
           <li>Professional HTML reports per run</li>
           <li>Ticket-ready evidence output</li>
           <li>Repeatable, consistent workflow</li>
-          <li>ARP-based rogue device detection</li>
+          <li>ARP-based device review</li>
           <li>SSL cert expiry with day countdown</li>
           <li>Latency baseline + jitter analysis</li>
         </ul>
@@ -264,7 +264,6 @@
           <li>latency-jitter.txt</li>
           <li>bandwidth-test.txt</li>
           <li>traceroute.txt</li>
-          <li>mtu-test.txt</li>
           <li>dns-google.txt</li>
           <li>dns-resolver-config.txt</li>
         </ul>
@@ -317,7 +316,7 @@
 <div class="section alt-bg" id="screenshots">
   <div class="section-inner">
     <div class="section-title">Visual Evidence</div>
-    <div class="section-sub">15 screenshots documenting the full workflow — from script execution to HTML reports to repository structure.</div>
+    <div class="section-sub">26 screenshots documenting the workflow — from script execution to HTML reports to repository structure.</div>
     <div class="screenshots-grid">
       <div class="shot-card">
         <img src="Screenshots/01-powershell-start.png" alt="PowerShell Start" loading="lazy"/>
@@ -352,8 +351,8 @@
         <div class="shot-label">Network Commands Run</div>
       </div>
       <div class="shot-card">
-        <img src="Screenshots/09-rogue-detection.png" alt="Rogue Device Detection" loading="lazy"/>
-        <div class="shot-label">Rogue Device Detection</div>
+        <img src="Screenshots/09-rogue-detection.png" alt="ARP Device Review" loading="lazy"/>
+        <div class="shot-label">ARP Device Review</div>
       </div>
       <div class="shot-card">
         <img src="Screenshots/10-arp-scan.png" alt="ARP Scan" loading="lazy"/>
@@ -368,7 +367,7 @@
         <div class="shot-label">GitHub Repository</div>
       </div>
       <div class="shot-card">
-        <img src="Screenshots/13-Sample-Outputs.png" alt="Sample Outputs" loading="lazy"/>
+        <img src="Screenshots/13-sample-outputs.png" alt="Sample Outputs" loading="lazy"/>
         <div class="shot-label">Sample Outputs Folder</div>
       </div>
       <div class="shot-card">
@@ -392,12 +391,20 @@
         <div class="shot-label">Script 04 — Wi-Fi Terminal</div>
       </div>
       <div class="shot-card">
+        <img src="Screenshots/19-adapter-report-routing.png" alt="Adapter Routing Table" loading="lazy"/>
+        <div class="shot-label">Adapter Routing Table</div>
+      </div>
+      <div class="shot-card">
         <img src="Screenshots/20-adapter-report-top.png" alt="Adapter Report" loading="lazy"/>
         <div class="shot-label">Script 05 — Adapter Report</div>
       </div>
       <div class="shot-card">
         <img src="Screenshots/21-adapter-report-interfaces.png" alt="Interfaces Table" loading="lazy"/>
         <div class="shot-label">Network Interfaces Table</div>
+      </div>
+      <div class="shot-card">
+        <img src="Screenshots/22-script-progress.png" alt="Script Progress" loading="lazy"/>
+        <div class="shot-label">Script Progress</div>
       </div>
       <div class="shot-card">
         <img src="Screenshots/23-ssl-report-browser.png" alt="SSL Report" loading="lazy"/>
@@ -431,21 +438,21 @@
       <span class="skill-tag">Wi-Fi Analysis</span>
       <span class="skill-tag">SSL/TLS Certificates</span>
       <span class="skill-tag">Latency & Jitter Analysis</span>
-      <span class="skill-tag">Rogue Device Detection</span>
+      <span class="skill-tag">ARP Device Review</span>
       <span class="skill-tag">ARP Monitoring</span>
-      <span class="skill-tag">MAC Vendor OSINT</span>
+      <span class="skill-tag">MAC Vendor Lookup</span>
       <span class="skill-tag">HTML Report Generation</span>
       <span class="skill-tag">Git Version Control</span>
       <span class="skill-tag">IT Support Documentation</span>
-      <span class="skill-tag">Security Auditing</span>
-      <span class="skill-tag">Cross-Platform Automation</span>
+      <span class="skill-tag">Security Triage</span>
+      <span class="skill-tag">macOS Automation</span>
       <span class="skill-tag">Cisco Networking Principles</span>
       <span class="skill-tag">TCP/IP Protocol Analysis</span>
       <span class="skill-tag">Traceroute Path Analysis</span>
     </div>
     <div class="tech-grid" style="margin-top:32px">
-      <div class="tech-card"><h4>Scripting</h4><p>PowerShell 7+ (cross-platform)</p></div>
-      <div class="tech-card"><h4>Platform</h4><p>macOS · Windows · Linux</p></div>
+      <div class="tech-card"><h4>Scripting</h4><p>PowerShell 7+</p></div>
+      <div class="tech-card"><h4>Platform</h4><p>macOS-focused implementation</p></div>
       <div class="tech-card"><h4>Reporting</h4><p>Self-contained HTML output</p></div>
       <div class="tech-card"><h4>Network Tools</h4><p>ping · traceroute · arp · dig · nc · nmap</p></div>
       <div class="tech-card"><h4>Version Control</h4><p>Git · GitHub · GitHub Pages</p></div>
@@ -456,10 +463,17 @@
 
 <div class="section alt-bg">
   <div class="section-inner">
+    <div class="section-title">Scope & Safety</div>
+    <div class="section-sub">The retained outputs are lab/home network evidence for portfolio review. Private IPs, MAC addresses, DNS resolver IPs, and local host details are included to preserve authentic troubleshooting output. Port checks, ARP review, network discovery, and nmap output should only be used on networks where troubleshooting or audit permission exists.</div>
+  </div>
+</div>
+
+<div class="section alt-bg">
+  <div class="section-inner">
     <div class="author-card">
       <h2>Md Rahat Islam Anik</h2>
-      <p>Cloud Computing & Network Administration · George Brown College · May 2026<br/>
-      AZ-900 · MS-900 · Cisco Networking Essentials · Anthropic AI Certifications</p>
+      <p>IT Systems Administrator · Network Diagnostics · PowerShell Automation<br/>
+      AZ-900 · MS-900 · Cisco Networking Essentials</p>
       <div class="author-btns">
         <a class="author-btn" href="https://linkedin.com/in/rahatislamanik" target="_blank">LinkedIn</a>
         <a class="author-btn" href="https://github.com/rahatislamanik-spec" target="_blank">GitHub Portfolio</a>

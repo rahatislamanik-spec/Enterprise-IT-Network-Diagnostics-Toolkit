@@ -196,7 +196,7 @@ $report = @"
 <body>
 
 <div class="header">
-  <div class="script-tag">Script 07 of 08</div>
+  <div class="script-tag">Script 07 of 09</div>
   <h1>SSL/TLS Certificate Check Report</h1>
   <p>Generated: $timestamp &nbsp;|&nbsp; Author: Md Rahat Islam Anik &nbsp;|&nbsp; Enterprise IT Network Diagnostics Toolkit</p>
 </div>

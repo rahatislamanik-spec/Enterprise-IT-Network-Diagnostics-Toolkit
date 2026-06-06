@@ -133,7 +133,7 @@ $report = @"
 <body>
 
 <div class="header">
-  <div class="script-tag">Script 05 of 08</div>
+  <div class="script-tag">Script 05 of 09</div>
   <h1>Network Adapter Health Report</h1>
   <p>Generated: $timestamp &nbsp;|&nbsp; Author: Md Rahat Islam Anik &nbsp;|&nbsp; Enterprise IT Network Diagnostics Toolkit</p>
 </div>
