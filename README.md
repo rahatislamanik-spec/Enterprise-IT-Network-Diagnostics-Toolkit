@@ -37,7 +37,7 @@ A multi-script PowerShell diagnostic toolkit that runs structured network assess
 
 This flow summarizes the toolkit's repeatable triage path: baseline checks, failure-domain isolation, security review, and HTML report output.
 
-[View interactive HTML version](docs/network-troubleshooting-flow.html)
+[View interactive HTML version](https://rahatislamanik-spec.github.io/Enterprise-IT-Network-Diagnostics-Toolkit/docs/network-troubleshooting-flow.html)
 
 ```
 MacBook Air              PowerShell Scripts           Output
