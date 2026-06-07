@@ -33,7 +33,11 @@ Network issues account for the majority of IT helpdesk tickets. Without structur
 
 A multi-script PowerShell diagnostic toolkit that runs structured network assessments and produces professional HTML reports — ready for ticket documentation, escalation, or handoff.
 
-For a reviewer-friendly triage view, see the [network troubleshooting flow diagram](docs/network-troubleshooting-flow.html).
+![Network Troubleshooting Flow](docs/images/network-troubleshooting-flow.svg)
+
+This flow summarizes the toolkit's repeatable triage path: baseline checks, failure-domain isolation, security review, and HTML report output.
+
+[View interactive HTML version](docs/network-troubleshooting-flow.html)
 
 ```
 MacBook Air              PowerShell Scripts           Output
