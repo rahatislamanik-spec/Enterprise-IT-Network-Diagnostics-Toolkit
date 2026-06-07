@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Diagnostics Troubleshooting Flow</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { min-height: 100vh; padding: 32px; background: #f1f5f9; color: #172033; font-family: "Segoe UI", Calibri, Arial, sans-serif; }
+        .container { max-width: 1120px; margin: 0 auto; padding: 34px; background: #fff; border: 1px solid #d5deea; border-radius: 10px; box-shadow: 0 16px 42px rgba(23,32,51,.12); }
+        .back-link { display: inline-block; margin-bottom: 22px; color: #2563a6; font-size: 14px; font-weight: 700; text-decoration: none; }
+        header { margin-bottom: 28px; text-align: center; }
+        h1 { margin-bottom: 10px; font-size: 30px; line-height: 1.2; }
+        .subtitle { color: #53647c; line-height: 1.5; }
+        .note { max-width: 860px; margin: 18px auto 0; padding: 14px 16px; background: #f7faff; border: 1px solid #d5deea; border-left: 4px solid #2563a6; border-radius: 6px; color: #36455c; font-size: 14px; line-height: 1.5; text-align: left; }
+        .flow { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 28px; }
+        .stage { padding: 18px; background: #f8fbff; border: 1px solid #cbd7e7; border-radius: 8px; }
+        .stage h2 { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #2563a6; font-size: 17px; }
+        .item { margin-bottom: 12px; padding: 14px; background: #fff; border: 2px solid #6f8fc0; border-radius: 8px; box-shadow: 0 3px 10px rgba(37,99,166,.12); font-weight: 700; line-height: 1.35; text-align: center; }
+        .item small { display: block; margin-top: 5px; color: #53647c; font-size: 12px; font-weight: 500; }
+        .item.core { background: #2563a6; color: #fff; border-color: #1d4f86; }
+        .item.core small { color: #dce9f8; }
+        .item.warn { background: #fff9e8; border-color: #d5a51d; }
+        .item.sec { background: #fff5f4; border-color: #d66a52; }
+        .outputs { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin-top: 24px; padding: 18px; background: #172033; border-radius: 8px; color: #fff; }
+        .outputs div { text-align: center; font-size: 13px; line-height: 1.4; }
+        .outputs strong { display: block; margin-bottom: 4px; font-size: 15px; }
+        @media (max-width: 900px) { .flow, .outputs { grid-template-columns: 1fr; } body { padding: 18px; } .container { padding: 24px; } h1 { font-size: 24px; } }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <a class="back-link" href="../README.md">Back to Network Diagnostics Toolkit</a>
+        <header>
+            <h1>Network Diagnostics Troubleshooting Flow</h1>
+            <p class="subtitle">Repeatable triage path for DNS, connectivity, service reachability, wireless health, SSL, latency, and security review</p>
+            <p class="note">This diagram explains the toolkit operating model. It is not a network map of a customer environment and should be used only on networks where troubleshooting or audit activity is authorized.</p>
+        </header>
+
+        <section class="flow" aria-label="Network troubleshooting flow">
+            <section class="stage">
+                <h2>1. Establish Baseline</h2>
+                <div class="item core">Host & Adapter Health<small>Hostname, OS, IP, interface state, routes</small></div>
+                <div class="item">DNS Resolver Review<small>Resolver config, forward lookup, reverse lookup</small></div>
+                <div class="item">Gateway & Internet Reachability<small>Ping, packet loss, gateway path</small></div>
+            </section>
+            <section class="stage">
+                <h2>2. Isolate Failure Domain</h2>
+                <div class="item warn">Port & Service Checks<small>HTTP/S, RDP, SMB, SMTP, LDAP, SSH</small></div>
+                <div class="item warn">Traceroute Analysis<small>Hop path, timeout points, latency jumps</small></div>
+                <div class="item warn">Wi-Fi Diagnostics<small>SSID, RSSI, SNR, band, channel, nearby networks</small></div>
+            </section>
+            <section class="stage">
+                <h2>3. Document & Escalate</h2>
+                <div class="item sec">ARP Device Review<small>Known devices, unknown devices, MAC vendor lookup</small></div>
+                <div class="item sec">SSL/TLS Certificate Check<small>Expiry, issuer, protocol, hostname context</small></div>
+                <div class="item core">HTML Report Output<small>Ticket evidence, handoff notes, baseline comparison</small></div>
+            </section>
+        </section>
+
+        <section class="outputs" aria-label="Support outcomes">
+            <div><strong>Help Desk</strong>Consistent first-response checks.</div>
+            <div><strong>Escalation</strong>Cleaner evidence for network or security teams.</div>
+            <div><strong>Security</strong>Authorized ARP and port visibility.</div>
+            <div><strong>Portfolio</strong>Proof of repeatable troubleshooting process.</div>
+        </section>
+    </main>
+</body>
+</html>
