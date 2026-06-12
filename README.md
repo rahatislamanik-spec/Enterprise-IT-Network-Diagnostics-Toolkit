@@ -1,4 +1,5 @@
 # Enterprise IT Network Diagnostics Toolkit
+> **Status:** Portfolio Complete — v1.0
 
 ### PowerShell · Network Diagnostics · Security Auditing · HTML Reporting · macOS · Git
 
