@@ -1,165 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Enterprise IT Network Diagnostics Toolkit | Md Rahat Islam Anik</title>
-<meta name="description" content="A multi-script PowerShell network diagnostics toolkit — DNS, connectivity, port scanning, Wi-Fi, SSL, rogue device detection, and more. Built by Md Rahat Islam Anik."/>
+<meta name="description" content="A multi-script PowerShell network diagnostics toolkit — DNS, connectivity, port scanning, Wi-Fi, SSL, rogue device detection, and more. Built by Md Rahat Islam Anik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1e293b;line-height:1.6}
-  a{color:#0078d4;text-decoration:none}
-  a:hover{text-decoration:underline}
+  :root{
+    --black: #07060a;
+    --char: #100c10;
+    --char2: #17121a;
+    --bone: #d9cdb8;
+    --bone-dim: #a99b86;
+    --blood: #861a1f;
+    --blood-bright: #c4262c;
+    --gold: #b8902f;
+    --gold-bright: #e0b84a;
+    --line: rgba(184, 144, 47, 0.18);
+    --max: 1180px;
+  }
 
-  /* NAV */
-  nav{background:#0f172a;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
-  .nav-brand{color:#fff;font-weight:700;font-size:0.95rem}
-  .nav-links{display:flex;gap:24px}
-  .nav-links a{color:#94a3b8;font-size:0.85rem;transition:color 0.2s}
-  .nav-links a:hover{color:#fff;text-decoration:none}
+  *{margin:0;padding:0;box-sizing:border-box;}
 
-  /* HERO */
-  .hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#0078d4 100%);color:#fff;padding:72px 32px 60px;text-align:center}
-  .hero-tag{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:4px 16px;font-size:0.8rem;margin-bottom:20px;letter-spacing:0.05em}
-  .hero h1{font-size:2.4rem;font-weight:800;margin-bottom:12px;line-height:1.2}
-  .hero h1 span{color:#60a5fa}
-  .hero p{font-size:1.05rem;opacity:0.85;max-width:640px;margin:0 auto 28px}
-  .hero-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-  .badge-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 14px;font-size:0.8rem;color:#e2e8f0}
-  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-block;padding:11px 26px;border-radius:8px;font-weight:600;font-size:0.9rem;transition:all 0.2s}
-  .btn-primary{background:#0078d4;color:#fff}
-  .btn-primary:hover{background:#006abc;text-decoration:none}
-  .btn-secondary{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.25)}
-  .btn-secondary:hover{background:rgba(255,255,255,0.2);text-decoration:none}
+  html{scroll-behavior:smooth;}
 
-  /* STATS */
-  .stats{background:#fff;padding:40px 32px;border-bottom:1px solid #e2e8f0}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:900px;margin:0 auto;text-align:center}
-  .stat-val{font-size:2.4rem;font-weight:800;color:#0078d4}
-  .stat-lbl{font-size:0.85rem;color:#64748b;margin-top:4px}
+  body{
+    background: var(--black);
+    color: var(--bone);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-  /* SECTIONS */
-  .section{padding:60px 32px}
-  .section-inner{max-width:960px;margin:0 auto}
-  .section-title{font-size:1.5rem;font-weight:700;color:#0f172a;margin-bottom:8px}
-  .section-sub{color:#64748b;margin-bottom:32px;font-size:0.95rem}
-  .alt-bg{background:#fff}
+  /* ===== Textures ===== */
+  body::before{
+    content:'';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(196,38,44,0.07), transparent 35%),
+      radial-gradient(circle at 85% 75%, rgba(184,144,47,0.06), transparent 40%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 9px);
+  }
 
-  /* PROBLEM/SOLUTION */
-  .ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .ps-card{border-radius:12px;padding:28px}
-  .ps-card.problem{background:#fef2f2;border:1px solid #fecaca}
-  .ps-card.solution{background:#f0fdf4;border:1px solid #86efac}
-  .ps-card h3{font-size:1rem;font-weight:700;margin-bottom:14px}
-  .ps-card.problem h3{color:#dc2626}
-  .ps-card.solution h3{color:#16a34a}
-  .ps-card ul{padding-left:18px}
-  .ps-card ul li{font-size:0.875rem;color:#374151;padding:4px 0}
+  /* ember grain */
+  body::after{
+    content:'';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  }
 
-  /* SCRIPTS TABLE */
-  .scripts-table{width:100%;border-collapse:collapse;font-size:0.875rem}
-  .scripts-table th{background:#f8fafc;color:#475569;font-weight:600;padding:12px 16px;text-align:left;border-bottom:2px solid #e2e8f0}
-  .scripts-table td{padding:12px 16px;border-bottom:1px solid #f1f5f9;vertical-align:top}
-  .scripts-table tr:last-child td{border-bottom:none}
-  .scripts-table tr:hover td{background:#f8fafc}
-  .script-num{display:inline-block;background:#0078d4;color:#fff;border-radius:6px;padding:2px 8px;font-size:0.75rem;font-weight:700;min-width:28px;text-align:center}
-  .script-name{font-family:monospace;color:#0f172a;font-size:0.82rem;font-weight:600}
+  a{color: var(--gold-bright); text-decoration: none; transition: color .2s;}
+  a:hover{color: var(--blood-bright);}
 
-  /* SAMPLE OUTPUTS */
-  .outputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .output-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px}
-  .output-card h4{font-size:0.85rem;font-weight:700;color:#0078d4;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em}
-  .output-card ul{padding-left:16px}
-  .output-card ul li{font-size:0.8rem;color:#475569;padding:3px 0;font-family:monospace}
+  .container{max-width: var(--max); margin: 0 auto; padding: 0 32px; position: relative; z-index: 2;}
 
-  /* SKILLS */
-  .skills-wrap{display:flex;flex-wrap:wrap;gap:10px}
-  .skill-tag{background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;border-radius:20px;padding:6px 14px;font-size:0.8rem;font-weight:500}
+  h1,h2,h3,h4{font-family:'Cinzel', serif; letter-spacing: 0.04em; font-weight: 600; color: var(--bone);}
 
-  /* SCREENSHOTS */
-  .screenshots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .shot-card{border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);background:#1e293b}
-  .shot-card img{width:100%;height:180px;object-fit:cover;object-position:top;display:block;transition:transform 0.3s}
-  .shot-card:hover img{transform:scale(1.03)}
-  .shot-label{padding:10px 14px;font-size:0.78rem;color:#94a3b8;font-weight:500}
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
 
-  /* TECH STACK */
-  .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .tech-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px}
-  .tech-card h4{font-size:0.8rem;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
-  .tech-card p{font-size:0.875rem;color:#1e293b;font-weight:500}
+  /* ===== Sigil divider ===== */
+  .sigil-divider{
+    display:flex; align-items:center; justify-content:center; gap: 18px;
+    margin: 64px 0;
+    color: var(--gold);
+    opacity: 0.65;
+  }
+  .sigil-divider .line{height:1px; flex:1; background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);}
+  .sigil-divider svg{width:26px; height:26px; flex-shrink:0;}
 
-  /* AUTHOR */
-  .author-card{background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:16px;padding:40px;text-align:center;color:#fff}
-  .author-card h2{font-size:1.4rem;margin-bottom:6px}
-  .author-card p{color:#94a3b8;margin-bottom:20px;font-size:0.9rem}
-  .author-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .author-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;border-radius:8px;padding:9px 20px;font-size:0.85rem;font-weight:600;transition:background 0.2s}
-  .author-btn:hover{background:rgba(255,255,255,0.2);text-decoration:none}
+  /* ===== Header / Nav ===== */
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(7,6,10,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 0;
+  }
+  .brand{
+    font-family:'Cinzel', serif; font-weight:700; font-size: 16px; letter-spacing: 0.18em;
+    color: var(--bone); text-transform: uppercase; display:flex; align-items:center; gap: 10px;
+  }
+  .brand .crest{width: 22px; height: 22px; color: var(--blood-bright);}
+  .nav-links{display:flex; gap: 30px; font-family:'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;}
+  .nav-links a{color: var(--bone-dim);}
+  .nav-links a:hover{color: var(--gold-bright);}
+  @media (max-width: 760px){ .nav-links{display:none;} }
 
-  /* FOOTER */
-  footer{background:#0f172a;color:#475569;text-align:center;padding:24px;font-size:0.8rem}
-  footer a{color:#64748b}
+  /* ===== Hero ===== */
+  .hero{
+    padding: 140px 0 100px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .hero-glow{
+    position:absolute; top:-220px; left:50%; transform:translateX(-50%);
+    width: 900px; height: 700px;
+    background: radial-gradient(circle, rgba(140,26,31,0.32) 0%, rgba(140,26,31,0.08) 38%, transparent 70%);
+    filter: blur(40px);
+    pointer-events:none;
+    animation: emberPulse 9s ease-in-out infinite;
+  }
+  @keyframes emberPulse{
+    0%,100%{ opacity: 0.7; transform: translateX(-50%) scale(1); }
+    50%{ opacity: 1; transform: translateX(-50%) scale(1.06); }
+  }
 
-  @media(max-width:700px){
-    .hero h1{font-size:1.6rem}
-    .stats-grid{grid-template-columns:repeat(2,1fr)}
-    .ps-grid,.tech-grid,.outputs-grid,.screenshots-grid{grid-template-columns:1fr}
-    .scripts-table{font-size:0.78rem}
+  .hero .eyebrow{display:block; margin-bottom: 26px;}
+  .hero h1{
+    font-size: clamp(40px, 6.4vw, 78px);
+    line-height: 1.08;
+    max-width: 880px;
+    text-transform: uppercase;
+  }
+  .hero h1 .accent{
+    color: var(--blood-bright);
+    text-shadow: 0 0 24px rgba(196,38,44,0.55), 0 0 60px rgba(196,38,44,0.25);
+  }
+  .hero p.lede{
+    font-size: 22px;
+    color: var(--bone-dim);
+    max-width: 640px;
+    margin-top: 28px;
+    font-style: italic;
+  }
+
+  .pill-row{display:flex; flex-wrap:wrap; gap: 12px; margin-top: 38px;}
+  .pill{
+    font-family:'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.06em;
+    border: 1px solid var(--line);
+    color: var(--bone-dim);
+    padding: 8px 16px;
+    border-radius: 2px;
+    background: rgba(184,144,47,0.04);
+  }
+
+  .cta-row{display:flex; flex-wrap:wrap; gap: 18px; margin-top: 46px;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 16px 32px;
+    border: 1px solid var(--gold);
+    color: var(--bone);
+    position: relative;
+    transition: all .25s ease;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn.primary{
+    background: linear-gradient(135deg, var(--blood) 0%, #5e1014 100%);
+    border-color: var(--blood-bright);
+    color: #f4e7d8;
+    box-shadow: 0 0 0 rgba(196,38,44,0);
+  }
+  .btn.primary:hover{ box-shadow: 0 6px 28px rgba(196,38,44,0.35); transform: translateY(-2px); border-color: var(--blood-bright); color:#fff;}
+  .btn.ghost:hover{ background: rgba(184,144,47,0.08); transform: translateY(-2px); border-color: var(--gold-bright); color: var(--gold-bright);}
+
+  /* ===== Stats strip ===== */
+  .stats{
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(184,144,47,0.04), transparent);
+  }
+  .stats-grid{
+    display:grid; grid-template-columns: repeat(4, 1fr);
+    padding: 46px 0;
+  }
+  .stat{ text-align:center; border-right: 1px solid var(--line); padding: 0 18px;}
+  .stat:last-child{border-right:none;}
+  .stat .num{
+    font-family:'Cinzel', serif; font-weight:700; font-size: 46px; color: var(--gold-bright);
+    text-shadow: 0 0 18px rgba(224,184,74,0.25);
+  }
+  .stat .label{
+    font-family:'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bone-dim);
+    margin-top: 8px;
+  }
+  @media (max-width: 760px){
+    .stats-grid{grid-template-columns: repeat(2,1fr); gap: 32px 0;}
+    .stat{border-right:none; border-bottom: 1px solid var(--line); padding-bottom: 24px;}
+    .stat:nth-child(2n){border-right:none;}
+  }
+
+  /* ===== Section shells ===== */
+  section{padding: 100px 0;}
+  .section-head{max-width: 720px; margin-bottom: 56px;}
+  .section-head .eyebrow{margin-bottom: 14px;}
+  .section-head h2{font-size: clamp(30px, 4vw, 44px); text-transform: uppercase;}
+  .section-head p{color: var(--bone-dim); font-size: 19px; margin-top: 16px;}
+
+  /* ===== Problem / Solution ===== */
+  .duel{
+    display:grid; grid-template-columns: 1fr 1px 1fr; gap: 48px;
+  }
+  .duel .divider-col{background: linear-gradient(180deg, transparent, var(--line) 15%, var(--line) 85%, transparent);}
+  .duel-col h3{
+    font-family:'Cinzel', serif; font-size: 20px; letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .duel-col.before h3{color: var(--bone-dim);}
+  .duel-col.after h3{color: var(--gold-bright);}
+  .duel-col ul{list-style:none;}
+  .duel-col li{
+    position: relative; padding-left: 28px; margin-bottom: 14px; font-size: 18px; color: var(--bone-dim);
+  }
+  .duel-col.after li{color: var(--bone);}
+  .duel-col.before li::before{
+    content:'✕'; position:absolute; left:0; color: var(--blood-bright); font-family:'IBM Plex Mono',monospace; font-size:14px; top: 3px;
+  }
+  .duel-col.after li::before{
+    content:'✓'; position:absolute; left:0; color: var(--gold-bright); font-family:'IBM Plex Mono',monospace; font-size:14px; top: 3px;
+  }
+  @media (max-width: 800px){
+    .duel{grid-template-columns: 1fr; gap: 40px;}
+    .duel .divider-col{display:none;}
+  }
+
+  /* ===== Flow diagram ===== */
+  .flow-wrap{
+    border: 1px solid var(--line);
+    background: linear-gradient(160deg, rgba(184,144,47,0.05), rgba(140,26,31,0.04));
+    padding: 48px;
+    margin-top: 48px;
+    position: relative;
+  }
+  .flow-wrap::before{
+    content:'';
+    position:absolute; top:14px; left:14px; right:14px; bottom:14px;
+    border: 1px solid rgba(184,144,47,0.14);
+    pointer-events:none;
+  }
+  .flow-grid{
+    display:grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 20px; align-items:center;
+  }
+  .flow-stage h4{
+    font-family:'Cinzel', serif; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-bright);
+    margin-bottom: 14px; padding-bottom:10px; border-bottom: 1px solid var(--line);
+  }
+  .flow-stage ul{list-style:none; font-family:'IBM Plex Mono', monospace; font-size: 13px; color: var(--bone-dim); line-height: 2;}
+  .flow-arrow{
+    font-size: 28px; color: var(--blood-bright); text-align:center;
+  }
+  @media (max-width: 800px){
+    .flow-grid{grid-template-columns: 1fr; gap: 28px;}
+    .flow-arrow{transform: rotate(90deg);}
+  }
+  .flow-link{margin-top: 28px; text-align:center; font-family:'IBM Plex Mono', monospace; font-size: 13px; letter-spacing:0.1em;}
+
+  /* ===== Scripts table ===== */
+  .scroll-table{overflow-x:auto; border: 1px solid var(--line);}
+  table{width:100%; border-collapse: collapse; font-size: 16px; min-width: 720px;}
+  thead th{
+    font-family:'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold);
+    text-align:left; padding: 18px 22px; border-bottom: 1px solid var(--line);
+    background: rgba(184,144,47,0.05);
+  }
+  tbody td{padding: 18px 22px; border-bottom: 1px solid var(--line); color: var(--bone-dim); vertical-align: top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background: rgba(196,38,44,0.05);}
+  .script-id{
+    font-family:'IBM Plex Mono', monospace; color: var(--blood-bright); font-weight:600; font-size:15px;
+  }
+  .script-name{font-family:'IBM Plex Mono', monospace; color: var(--bone); font-size: 14px;}
+
+  /* ===== Sample data ===== */
+  .data-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    border: 1px solid var(--line);
+    background: var(--line);
+  }
+  .data-card{
+    background: var(--black);
+    padding: 30px;
+  }
+  .data-card h4{
+    font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-bright);
+    margin-bottom: 16px; display:flex; align-items:center; gap: 10px;
+  }
+  .data-card h4 .glyph{color: var(--blood-bright); font-size: 16px;}
+  .data-card ul{list-style:none; font-family:'IBM Plex Mono', monospace; font-size: 13px; color: var(--bone-dim); line-height: 2.1;}
+  @media (max-width: 900px){ .data-grid{grid-template-columns: 1fr 1fr;} }
+  @media (max-width: 600px){ .data-grid{grid-template-columns: 1fr;} }
+
+  /* ===== Gallery ===== */
+  .gallery{
+    display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;
+  }
+  .gallery figure{
+    border: 1px solid var(--line);
+    overflow:hidden;
+    background: var(--char);
+    transition: border-color .25s, transform .25s;
+  }
+  .gallery figure:hover{ border-color: var(--gold); transform: translateY(-4px); }
+  .gallery img{display:block; width:100%; height: 190px; object-fit: cover; filter: saturate(0.85) contrast(1.05);}
+  .gallery figcaption{
+    font-family:'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.05em; color: var(--bone-dim);
+    padding: 14px 16px; border-top: 1px solid var(--line);
+  }
+
+  /* ===== Skills ===== */
+  .skills-cloud{display:flex; flex-wrap:wrap; gap: 12px;}
+  .skill-tag{
+    font-family:'IBM Plex Mono', monospace; font-size: 13px; letter-spacing:0.04em;
+    padding: 10px 18px; border: 1px solid var(--line); color: var(--bone-dim);
+    transition: all .2s;
+  }
+  .skill-tag:hover{ border-color: var(--blood-bright); color: var(--bone); background: rgba(196,38,44,0.06);}
+
+  .skills-meta{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 48px;
+    border: 1px solid var(--line); background: var(--line);
+  }
+  .meta-card{background: var(--black); padding: 26px 28px;}
+  .meta-card .k{font-family:'IBM Plex Mono', monospace; font-size: 11px; letter-spacing:0.2em; text-transform:uppercase; color: var(--gold);}
+  .meta-card .v{margin-top: 8px; font-size: 19px; color: var(--bone);}
+  @media (max-width: 800px){ .skills-meta{grid-template-columns: 1fr;} }
+
+  /* ===== Scope notice ===== */
+  .scope{
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--blood-bright);
+    padding: 32px 36px;
+    background: linear-gradient(90deg, rgba(196,38,44,0.06), transparent 60%);
+    font-size: 17px; color: var(--bone-dim);
+  }
+  .scope strong{color: var(--gold-bright); font-style:normal;}
+
+  /* ===== Footer ===== */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 70px 0 50px;
+    text-align:center;
+  }
+  footer h2{font-size: 30px; text-transform:uppercase; margin-bottom: 10px;}
+  footer .role{font-family:'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;}
+  footer .cta-row{justify-content:center;}
+  footer .copyright{
+    margin-top: 60px; font-family:'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: var(--bone-dim); opacity:0.6;
+  }
+
+  /* fade-in on scroll */
+  .reveal{ opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible{ opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    .hero-glow{animation:none;}
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-brand">Enterprise IT Network Diagnostics Toolkit</div>
-  <div class="nav-links">
-    <a href="#scripts">Scripts</a>
-    <a href="#outputs">Sample Data</a>
-    <a href="#screenshots">Screenshots</a>
-    <a href="https://github.com/rahatislamanik-spec/Enterprise-IT-Network-Diagnostics-Toolkit" target="_blank">GitHub</a>
+<header>
+  <div class="container">
+    <nav>
+      <div class="brand">
+        <svg class="crest" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 4 C50 4 20 22 20 48 C20 70 36 86 50 96 C64 86 80 70 80 48 C80 22 50 4 50 4 Z M50 14 C50 14 70 28 70 48 C70 64 58 78 50 86 C42 78 30 64 30 48 C30 28 50 14 50 14 Z"/>
+        </svg>
+        Network Diagnostics
+      </div>
+      <div class="nav-links">
+        <a href="#scripts">Scripts</a>
+        <a href="#outputs">Sample Data</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="https://github.com/rahatislamanik-spec/Enterprise-IT-Network-Diagnostics-Toolkit" target="_blank">GitHub</a>
+      </div>
+    </nav>
   </div>
-</nav>
+</header>
 
-<div class="hero">
-  <div class="hero-tag">Portfolio Project · 2026</div>
-  <h1>Enterprise IT <span>Network Diagnostics</span> Toolkit</h1>
-  <p>A multi-script PowerShell toolkit for enterprise network diagnostics, security auditing, and automated HTML reporting — built for real IT support workflows.</p>
-  <div class="hero-badges">
-    <span class="badge-pill">PowerShell 7+</span>
-    <span class="badge-pill">macOS · PowerShell 7+</span>
-    <span class="badge-pill">DNS · Connectivity · Ports · Wi-Fi · SSL</span>
-    <span class="badge-pill">ARP Device Review</span>
-    <span class="badge-pill">HTML Reports</span>
-    <span class="badge-pill">$0 Cost</span>
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <span class="eyebrow">Portfolio Project · 2026 · Status: Complete v1.0</span>
+    <h1>Enterprise IT Network <span class="accent">Diagnostics</span> Toolkit</h1>
+    <p class="lede">Nine PowerShell scripts. One repeatable triage path. Every diagnostic — DNS, connectivity, ports, Wi-Fi, SSL, and rogue devices — captured as ticket-ready evidence, not scattered terminal output.</p>
+
+    <div class="pill-row">
+      <span class="pill">PowerShell 7+ · macOS</span>
+      <span class="pill">DNS · Connectivity · Ports · Wi-Fi · SSL</span>
+      <span class="pill">ARP Device Review</span>
+      <span class="pill">HTML Reports</span>
+      <span class="pill">$0 Cost</span>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn primary" href="https://github.com/rahatislamanik-spec/Enterprise-IT-Network-Diagnostics-Toolkit" target="_blank">View on GitHub</a>
+      <a class="btn ghost" href="https://github.com/rahatislamanik-spec/Enterprise-IT-Network-Diagnostics-Toolkit/tree/main/Reports" target="_blank">View HTML Reports</a>
+      <a class="btn ghost" href="https://linkedin.com/in/rahatislamanik" target="_blank">LinkedIn</a>
+    </div>
   </div>
-  <div class="hero-btns">
-    <a class="btn btn-primary" href="https://github.com/rahatislamanik-spec/Enterprise-IT-Network-Diagnostics-Toolkit" target="_blank">View on GitHub</a>
-    <a class="btn btn-secondary" href="https://github.com/rahatislamanik-spec/Enterprise-IT-Network-Diagnostics-Toolkit/tree/main/Reports" target="_blank">View HTML Reports</a>
-    <a class="btn btn-secondary" href="https://linkedin.com/in/rahatislamanik" target="_blank">LinkedIn</a>
-  </div>
-</div>
+</section>
 
 <div class="stats">
-  <div class="stats-grid">
-    <div><div class="stat-val">9</div><div class="stat-lbl">PowerShell Scripts</div></div>
-    <div><div class="stat-val">8</div><div class="stat-lbl">HTML Reports</div></div>
-    <div><div class="stat-val">27</div><div class="stat-lbl">Diagnostic Files</div></div>
-    <div><div class="stat-val">26</div><div class="stat-lbl">Screenshots</div></div>
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat"><div class="num">9</div><div class="label">PowerShell Scripts</div></div>
+      <div class="stat"><div class="num">8</div><div class="label">HTML Reports</div></div>
+      <div class="stat"><div class="num">27</div><div class="label">Diagnostic Files</div></div>
+      <div class="stat"><div class="num">26</div><div class="label">Screenshots</div></div>
+    </div>
   </div>
 </div>
 
-<div class="section" id="problem">
-  <div class="section-inner">
-    <div class="section-title">The Problem & Solution</div>
-    <div class="section-sub">Network issues make up the majority of IT helpdesk tickets. Without structure, diagnostics are slow, inconsistent, and undocumented.</div>
-    <div class="ps-grid">
-      <div class="ps-card problem">
-        <h3>❌ Without This Toolkit</h3>
+<section id="problem">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Problem & Solution</span>
+      <h2>Order From Chaos</h2>
+      <p>Network issues make up the majority of IT helpdesk tickets. Without structure, diagnostics are slow, inconsistent, and undocumented.</p>
+    </div>
+
+    <div class="duel reveal">
+      <div class="duel-col before">
+        <h3>Without This Toolkit</h3>
         <ul>
           <li>Manual commands run one by one</li>
-          <li>Results scattered across terminal</li>
+          <li>Results scattered across the terminal</li>
           <li>Nothing documented for tickets</li>
           <li>No repeatable process</li>
           <li>Unknown devices are harder to review</li>
@@ -167,8 +446,9 @@
           <li>No baseline for comparison</li>
         </ul>
       </div>
-      <div class="ps-card solution">
-        <h3>✅ With This Toolkit</h3>
+      <div class="divider-col"></div>
+      <div class="duel-col after">
+        <h3>With This Toolkit</h3>
         <ul>
           <li>9 structured diagnostic scripts</li>
           <li>Professional HTML reports per run</li>
@@ -180,75 +460,100 @@
         </ul>
       </div>
     </div>
+
+    <div class="flow-wrap reveal">
+      <div class="flow-grid">
+        <div class="flow-stage">
+          <h4>MacBook Air</h4>
+          <ul>
+            <li>Network endpoint</li>
+            <li>IT support call</li>
+            <li>Security audit</li>
+          </ul>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-stage">
+          <h4>PowerShell Scripts</h4>
+          <ul>
+            <li>DNS Resolution</li>
+            <li>Connectivity Tests</li>
+            <li>Port Scanning</li>
+            <li>Wi-Fi Diagnostics</li>
+            <li>SSL/TLS Check</li>
+            <li>ARP Device Review</li>
+            <li>ARP Monitoring</li>
+            <li>Traceroute Analysis</li>
+            <li>Latency Baseline</li>
+          </ul>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-stage">
+          <h4>Output</h4>
+          <ul>
+            <li>HTML Report</li>
+            <li>Ticket evidence</li>
+            <li>Documentation ready</li>
+            <li>Sample output files</li>
+            <li>Screenshots</li>
+            <li>GitHub Repository</li>
+            <li>Portfolio proof</li>
+            <li>Version control</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flow-link">
+        <a href="https://rahatislamanik-spec.github.io/Enterprise-IT-Network-Diagnostics-Toolkit/docs/network-troubleshooting-flow.html" target="_blank">View interactive flow diagram →</a>
+      </div>
+    </div>
   </div>
+</section>
+
+<div class="sigil-divider reveal container">
+  <div class="line"></div>
+  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M50 8 C50 8 24 24 24 50 C24 70 38 84 50 92 C62 84 76 70 76 50 C76 24 50 8 50 8 Z"/></svg>
+  <div class="line"></div>
 </div>
 
-<div class="section alt-bg" id="scripts">
-  <div class="section-inner">
-    <div class="section-title">Scripts</div>
-    <div class="section-sub">All 9 scripts run on macOS PowerShell 7+ and generate self-contained HTML reports.</div>
-    <table class="scripts-table">
-      <thead>
-        <tr><th>#</th><th>Script</th><th>What It Diagnoses</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="script-num">01</span></td>
-          <td><span class="script-name">01-dns-diagnostics.ps1</span></td>
-          <td>DNS resolution for 7 domains · reverse lookups · system DNS server check · failure detection</td>
-        </tr>
-        <tr>
-          <td><span class="script-num">02</span></td>
-          <td><span class="script-name">02-network-connectivity.ps1</span></td>
-          <td>Gateway reachability · internet connectivity · packet loss · RTT min/avg/max per host</td>
-        </tr>
-        <tr>
-          <td><span class="script-num">03</span></td>
-          <td><span class="script-name">03-port-service-check.ps1</span></td>
-          <td>36 port tests across 3 targets · HTTP/S · RDP · SMB · SMTP · LDAP · SSH · IMAP/SSL</td>
-        </tr>
-        <tr>
-          <td><span class="script-num">04</span></td>
-          <td><span class="script-name">04-wifi-diagnostics.ps1</span></td>
-          <td>SSID · RSSI signal strength · SNR · channel · frequency band · nearby network scan</td>
-        </tr>
-        <tr>
-          <td><span class="script-num">05</span></td>
-          <td><span class="script-name">05-network-adapter-health.ps1</span></td>
-          <td>All network interfaces · IP/MAC/MTU · active/inactive status · routing table summary</td>
-        </tr>
-        <tr>
-          <td><span class="script-num">06</span></td>
-          <td><span class="script-name">06-traceroute-analysis.ps1</span></td>
-          <td>Hop-by-hop path to 3 destinations · per-hop RTT · timeout detection · 20-hop max</td>
-        </tr>
-        <tr>
-          <td><span class="script-num">07</span></td>
-          <td><span class="script-name">07-ssl-cert-check.ps1</span></td>
-          <td>SSL/TLS certs for 8 domains · expiry dates · days remaining · issuer · protocol version</td>
-        </tr>
-        <tr>
-          <td><span class="script-num">08</span></td>
-          <td><span class="script-name">08-latency-baseline.ps1</span></td>
-          <td>20-ping baseline to 5 hosts · jitter calculation · packet loss % · RTT sparklines</td>
-        </tr>
-        <tr>
-          <td><span class="script-num">09</span></td>
-          <td><span class="script-name">system-health-check.ps1</span></td>
-          <td>Hostname · OS version · disk usage · IP address · DNS config · ping test · HTML report</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<section id="scripts">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Arsenal</span>
+      <h2>Nine Scripts, One Workflow</h2>
+      <p>All scripts run on macOS PowerShell 7+ and generate self-contained HTML reports.</p>
+    </div>
 
-<div class="section" id="outputs">
-  <div class="section-inner">
-    <div class="section-title">Sample Outputs</div>
-    <div class="section-sub">27 diagnostic files collected from a live network environment — sanitized for privacy. Real commands, real results.</div>
-    <div class="outputs-grid">
-      <div class="output-card">
-        <h4>Network Configuration</h4>
+    <div class="scroll-table reveal">
+      <table>
+        <thead>
+          <tr><th>No.</th><th>Script</th><th>What It Diagnoses</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="script-id">01</td><td class="script-name">01-dns-diagnostics.ps1</td><td>DNS resolution for 7 domains · reverse lookups · system DNS server check · failure detection</td></tr>
+          <tr><td class="script-id">02</td><td class="script-name">02-network-connectivity.ps1</td><td>Gateway reachability · internet connectivity · packet loss · RTT min/avg/max per host</td></tr>
+          <tr><td class="script-id">03</td><td class="script-name">03-port-service-check.ps1</td><td>36 port tests across 3 targets · HTTP/S · RDP · SMB · SMTP · LDAP · SSH · IMAP/SSL</td></tr>
+          <tr><td class="script-id">04</td><td class="script-name">04-wifi-diagnostics.ps1</td><td>SSID · RSSI signal strength · SNR · channel · frequency band · nearby network scan</td></tr>
+          <tr><td class="script-id">05</td><td class="script-name">05-network-adapter-health.ps1</td><td>All network interfaces · IP/MAC/MTU · active/inactive status · routing table summary</td></tr>
+          <tr><td class="script-id">06</td><td class="script-name">06-traceroute-analysis.ps1</td><td>Hop-by-hop path to 3 destinations · per-hop RTT · timeout detection · 20-hop max</td></tr>
+          <tr><td class="script-id">07</td><td class="script-name">07-ssl-cert-check.ps1</td><td>SSL/TLS certs for 8 domains · expiry dates · days remaining · issuer · protocol version</td></tr>
+          <tr><td class="script-id">08</td><td class="script-name">08-latency-baseline.ps1</td><td>20-ping baseline to 5 hosts · jitter calculation · packet loss % · RTT sparklines</td></tr>
+          <tr><td class="script-id">09</td><td class="script-name">system-health-check.ps1</td><td>Hostname · OS version · disk usage · IP address · DNS config · ping test · HTML report</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="outputs" style="border-top: 1px solid var(--line);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Evidence</span>
+      <h2>Sample Outputs</h2>
+      <p>27 diagnostic files collected from a live network environment — sanitized for privacy. Real commands, real results.</p>
+    </div>
+
+    <div class="data-grid reveal">
+      <div class="data-card">
+        <h4><span class="glyph">⌬</span> Network Configuration</h4>
         <ul>
           <li>ifconfig-macos.txt</li>
           <li>routing-table.txt</li>
@@ -258,8 +563,8 @@
           <li>interface-traffic.txt</li>
         </ul>
       </div>
-      <div class="output-card">
-        <h4>Performance Metrics</h4>
+      <div class="data-card">
+        <h4><span class="glyph">⌬</span> Performance Metrics</h4>
         <ul>
           <li>latency-jitter.txt</li>
           <li>bandwidth-test.txt</li>
@@ -268,8 +573,8 @@
           <li>dns-resolver-config.txt</li>
         </ul>
       </div>
-      <div class="output-card">
-        <h4>Protocol Statistics</h4>
+      <div class="data-card">
+        <h4><span class="glyph">⌬</span> Protocol Statistics</h4>
         <ul>
           <li>tcp-ip-statistics.txt</li>
           <li>multicast-groups.txt</li>
@@ -278,8 +583,8 @@
           <li>wifi-status.txt</li>
         </ul>
       </div>
-      <div class="output-card">
-        <h4>Security Audits</h4>
+      <div class="data-card">
+        <h4><span class="glyph">⚔</span> Security Audits</h4>
         <ul>
           <li>rogue-device-report.txt</li>
           <li>rogue-detection.txt</li>
@@ -288,8 +593,8 @@
           <li>gateway-port-scan.txt</li>
         </ul>
       </div>
-      <div class="output-card">
-        <h4>Device Discovery</h4>
+      <div class="data-card">
+        <h4><span class="glyph">⚔</span> Device Discovery</h4>
         <ul>
           <li>network-scan.txt</li>
           <li>all-network-devices.txt</li>
@@ -299,8 +604,8 @@
           <li>nmap-device-discovery.txt</li>
         </ul>
       </div>
-      <div class="output-card">
-        <h4>Commands Used</h4>
+      <div class="data-card">
+        <h4><span class="glyph">⚔</span> Commands Used</h4>
         <ul>
           <li>ifconfig · netstat · arp</li>
           <li>dig · nslookup · scutil</li>
@@ -311,126 +616,62 @@
       </div>
     </div>
   </div>
+</section>
+
+<div class="sigil-divider reveal container">
+  <div class="line"></div>
+  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M50 8 C50 8 24 24 24 50 C24 70 38 84 50 92 C62 84 76 70 76 50 C76 24 50 8 50 8 Z"/></svg>
+  <div class="line"></div>
 </div>
 
-<div class="section alt-bg" id="screenshots">
-  <div class="section-inner">
-    <div class="section-title">Visual Evidence</div>
-    <div class="section-sub">26 screenshots documenting the workflow — from script execution to HTML reports to repository structure.</div>
-    <div class="screenshots-grid">
-      <div class="shot-card">
-        <img src="Screenshots/01-powershell-start.png" alt="PowerShell Start" loading="lazy"/>
-        <div class="shot-label">PowerShell — Script Start</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/02-powershell-running.png" alt="PowerShell Running" loading="lazy"/>
-        <div class="shot-label">PowerShell — Script Running</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/03-dns-output.png" alt="DNS Output" loading="lazy"/>
-        <div class="shot-label">DNS Diagnostics Output</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/04-connectivity-output.png" alt="Connectivity Output" loading="lazy"/>
-        <div class="shot-label">Connectivity Test Output</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/05-port-scan.png" alt="Port Scan" loading="lazy"/>
-        <div class="shot-label">Port & Service Check</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/06-html-report.png" alt="HTML Report" loading="lazy"/>
-        <div class="shot-label">HTML Report — Generated</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/07-html-browser.png" alt="HTML Browser" loading="lazy"/>
-        <div class="shot-label">HTML Report — Browser View</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/08-network-cmds.png" alt="Network Commands" loading="lazy"/>
-        <div class="shot-label">Network Commands Run</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/09-rogue-detection.png" alt="ARP Device Review" loading="lazy"/>
-        <div class="shot-label">ARP Device Review</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/10-arp-scan.png" alt="ARP Scan" loading="lazy"/>
-        <div class="shot-label">ARP Network Scan</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/11-git-history.png" alt="Git History" loading="lazy"/>
-        <div class="shot-label">Git Commit History</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/12-github-repo.png" alt="GitHub Repo" loading="lazy"/>
-        <div class="shot-label">GitHub Repository</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/13-sample-outputs.png" alt="Sample Outputs" loading="lazy"/>
-        <div class="shot-label">Sample Outputs Folder</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/14-security-files.png" alt="Security Files" loading="lazy"/>
-        <div class="shot-label">Security Audit Files</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/15-project-structure.png" alt="Project Structure" loading="lazy"/>
-        <div class="shot-label">Project Structure</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/16-live-site-browser.png" alt="Live Site" loading="lazy"/>
-        <div class="shot-label">Live Site — Browser</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/17-repo-final-structure.png" alt="Repo Structure" loading="lazy"/>
-        <div class="shot-label">Repo Final Structure</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/18-wifi-script-terminal.png" alt="Wi-Fi Script" loading="lazy"/>
-        <div class="shot-label">Script 04 — Wi-Fi Terminal</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/19-adapter-report-routing.png" alt="Adapter Routing Table" loading="lazy"/>
-        <div class="shot-label">Adapter Routing Table</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/20-adapter-report-top.png" alt="Adapter Report" loading="lazy"/>
-        <div class="shot-label">Script 05 — Adapter Report</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/21-adapter-report-interfaces.png" alt="Interfaces Table" loading="lazy"/>
-        <div class="shot-label">Network Interfaces Table</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/22-script-progress.png" alt="Script Progress" loading="lazy"/>
-        <div class="shot-label">Script Progress</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/23-ssl-report-browser.png" alt="SSL Report" loading="lazy"/>
-        <div class="shot-label">Script 07 — SSL Cert Report</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/24-latency-report-browser.png" alt="Latency Report" loading="lazy"/>
-        <div class="shot-label">Script 08 — Latency Report</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/25-html-reports-gallery.png" alt="Reports Gallery" loading="lazy"/>
-        <div class="shot-label">HTML Reports Gallery</div>
-      </div>
-      <div class="shot-card">
-        <img src="Screenshots/26-html-report-detail.png" alt="Report Detail" loading="lazy"/>
-        <div class="shot-label">HTML Report Detail</div>
-      </div>
+<section id="screenshots">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visual Evidence</span>
+      <h2>The Full Run</h2>
+      <p>26 screenshots documenting the workflow — from script execution to HTML reports to repository structure.</p>
+    </div>
+
+    <div class="gallery reveal">
+      <figure><img src="Screenshots/01-powershell-start.png" alt="PowerShell Start" loading="lazy"><figcaption>PowerShell — Script Start</figcaption></figure>
+      <figure><img src="Screenshots/02-powershell-running.png" alt="PowerShell Running" loading="lazy"><figcaption>PowerShell — Script Running</figcaption></figure>
+      <figure><img src="Screenshots/03-dns-output.png" alt="DNS Output" loading="lazy"><figcaption>DNS Diagnostics Output</figcaption></figure>
+      <figure><img src="Screenshots/04-connectivity-output.png" alt="Connectivity Output" loading="lazy"><figcaption>Connectivity Test Output</figcaption></figure>
+      <figure><img src="Screenshots/05-port-scan.png" alt="Port Scan" loading="lazy"><figcaption>Port & Service Check</figcaption></figure>
+      <figure><img src="Screenshots/06-html-report.png" alt="HTML Report" loading="lazy"><figcaption>HTML Report — Generated</figcaption></figure>
+      <figure><img src="Screenshots/07-html-browser.png" alt="HTML Browser" loading="lazy"><figcaption>HTML Report — Browser View</figcaption></figure>
+      <figure><img src="Screenshots/08-network-cmds.png" alt="Network Commands" loading="lazy"><figcaption>Network Commands Run</figcaption></figure>
+      <figure><img src="Screenshots/09-rogue-detection.png" alt="ARP Device Review" loading="lazy"><figcaption>ARP Device Review</figcaption></figure>
+      <figure><img src="Screenshots/10-arp-scan.png" alt="ARP Scan" loading="lazy"><figcaption>ARP Network Scan</figcaption></figure>
+      <figure><img src="Screenshots/11-git-history.png" alt="Git History" loading="lazy"><figcaption>Git Commit History</figcaption></figure>
+      <figure><img src="Screenshots/12-github-repo.png" alt="GitHub Repo" loading="lazy"><figcaption>GitHub Repository</figcaption></figure>
+      <figure><img src="Screenshots/13-sample-outputs.png" alt="Sample Outputs" loading="lazy"><figcaption>Sample Outputs Folder</figcaption></figure>
+      <figure><img src="Screenshots/14-security-files.png" alt="Security Files" loading="lazy"><figcaption>Security Audit Files</figcaption></figure>
+      <figure><img src="Screenshots/15-project-structure.png" alt="Project Structure" loading="lazy"><figcaption>Project Structure</figcaption></figure>
+      <figure><img src="Screenshots/16-live-site-browser.png" alt="Live Site" loading="lazy"><figcaption>Live Site — Browser</figcaption></figure>
+      <figure><img src="Screenshots/17-repo-final-structure.png" alt="Repo Structure" loading="lazy"><figcaption>Repo Final Structure</figcaption></figure>
+      <figure><img src="Screenshots/18-wifi-script-terminal.png" alt="Wi-Fi Script" loading="lazy"><figcaption>Script 04 — Wi-Fi Terminal</figcaption></figure>
+      <figure><img src="Screenshots/19-adapter-report-routing.png" alt="Adapter Routing Table" loading="lazy"><figcaption>Adapter Routing Table</figcaption></figure>
+      <figure><img src="Screenshots/20-adapter-report-top.png" alt="Adapter Report" loading="lazy"><figcaption>Script 05 — Adapter Report</figcaption></figure>
+      <figure><img src="Screenshots/21-adapter-report-interfaces.png" alt="Interfaces Table" loading="lazy"><figcaption>Network Interfaces Table</figcaption></figure>
+      <figure><img src="Screenshots/22-script-progress.png" alt="Script Progress" loading="lazy"><figcaption>Script Progress</figcaption></figure>
+      <figure><img src="Screenshots/23-ssl-report-browser.png" alt="SSL Report" loading="lazy"><figcaption>Script 07 — SSL Cert Report</figcaption></figure>
+      <figure><img src="Screenshots/24-latency-report-browser.png" alt="Latency Report" loading="lazy"><figcaption>Script 08 — Latency Report</figcaption></figure>
+      <figure><img src="Screenshots/25-html-reports-gallery.png" alt="Reports Gallery" loading="lazy"><figcaption>HTML Reports Gallery</figcaption></figure>
+      <figure><img src="Screenshots/26-html-report-detail.png" alt="Report Detail" loading="lazy"><figcaption>HTML Report Detail</figcaption></figure>
     </div>
   </div>
-</div>
+</section>
 
-<div class="section" id="skills">
-  <div class="section-inner">
-    <div class="section-title">Skills Demonstrated</div>
-    <div class="section-sub">Technical capabilities evidenced by this project.</div>
-    <div class="skills-wrap">
+<section id="skills" style="border-top: 1px solid var(--line);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Skills Demonstrated</span>
+      <h2>Technical Capabilities</h2>
+      <p>Capabilities evidenced across all nine scripts and their generated reports.</p>
+    </div>
+
+    <div class="skills-cloud reveal">
       <span class="skill-tag">PowerShell Scripting</span>
       <span class="skill-tag">Network Diagnostics</span>
       <span class="skill-tag">DNS Troubleshooting</span>
@@ -450,43 +691,47 @@
       <span class="skill-tag">TCP/IP Protocol Analysis</span>
       <span class="skill-tag">Traceroute Path Analysis</span>
     </div>
-    <div class="tech-grid" style="margin-top:32px">
-      <div class="tech-card"><h4>Scripting</h4><p>PowerShell 7+</p></div>
-      <div class="tech-card"><h4>Platform</h4><p>macOS-focused implementation</p></div>
-      <div class="tech-card"><h4>Reporting</h4><p>Self-contained HTML output</p></div>
-      <div class="tech-card"><h4>Network Tools</h4><p>ping · traceroute · arp · dig · nc · nmap</p></div>
-      <div class="tech-card"><h4>Version Control</h4><p>Git · GitHub · GitHub Pages</p></div>
-      <div class="tech-card"><h4>Cost</h4><p>$0 — Zero paid tools</p></div>
+
+    <div class="skills-meta reveal">
+      <div class="meta-card"><div class="k">Scripting</div><div class="v">PowerShell 7+</div></div>
+      <div class="meta-card"><div class="k">Platform</div><div class="v">macOS-focused implementation</div></div>
+      <div class="meta-card"><div class="k">Reporting</div><div class="v">Self-contained HTML output</div></div>
+      <div class="meta-card"><div class="k">Network Tools</div><div class="v">ping · traceroute · arp · dig · nc · nmap</div></div>
+      <div class="meta-card"><div class="k">Version Control</div><div class="v">Git · GitHub · GitHub Pages</div></div>
+      <div class="meta-card"><div class="k">Cost</div><div class="v">$0 — Zero paid tools</div></div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="section alt-bg">
-  <div class="section-inner">
-    <div class="section-title">Scope & Safety</div>
-    <div class="section-sub">The retained outputs are lab/home network evidence for portfolio review. Private IPs, MAC addresses, DNS resolver IPs, and local host details are included to preserve authentic troubleshooting output. Port checks, ARP review, network discovery, and nmap output should only be used on networks where troubleshooting or audit permission exists.</div>
-  </div>
-</div>
-
-<div class="section alt-bg">
-  <div class="section-inner">
-    <div class="author-card">
-      <h2>Md Rahat Islam Anik</h2>
-      <p>IT Systems Administrator · Network Diagnostics · PowerShell Automation<br/>
-      AZ-900 · MS-900 · Cisco Networking Essentials</p>
-      <div class="author-btns">
-        <a class="author-btn" href="https://linkedin.com/in/rahatislamanik" target="_blank">LinkedIn</a>
-        <a class="author-btn" href="https://github.com/rahatislamanik-spec" target="_blank">GitHub Portfolio</a>
-        <a class="author-btn" href="https://github.com/rahatislamanik-spec/Enterprise-IT-Network-Diagnostics-Toolkit" target="_blank">This Repository</a>
-      </div>
+<section id="scope">
+  <div class="container">
+    <div class="scope reveal">
+      <strong>Scope & Safety —</strong> The retained outputs are lab/home network evidence for portfolio review. Private IPs, MAC addresses, DNS resolver IPs, and local host details are included to preserve authentic troubleshooting output. Port checks, ARP review, network discovery, and nmap output should only be used on networks where troubleshooting or audit permission exists.
     </div>
   </div>
-</div>
+</section>
 
 <footer>
-  <p>Enterprise IT Network Diagnostics Toolkit &nbsp;·&nbsp; Md Rahat Islam Anik &nbsp;·&nbsp; 2026</p>
-  <p style="margin-top:6px"><a href="https://github.com/rahatislamanik-spec">github.com/rahatislamanik-spec</a></p>
+  <div class="container">
+    <h2>Md Rahat Islam Anik</h2>
+    <div class="role">IT Systems Administrator · Network Diagnostics · PowerShell Automation</div>
+    <div class="role" style="color:var(--bone-dim); letter-spacing:0.1em;">AZ-900 · MS-900 · Cisco Networking Essentials</div>
+    <div class="cta-row">
+      <a class="btn primary" href="https://linkedin.com/in/rahatislamanik" target="_blank">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/rahatislamanik-spec" target="_blank">GitHub Portfolio</a>
+      <a class="btn ghost" href="https://github.com/rahatislamanik-spec/Enterprise-IT-Network-Diagnostics-Toolkit" target="_blank">This Repository</a>
+    </div>
+    <div class="copyright">Enterprise IT Network Diagnostics Toolkit · Md Rahat Islam Anik · 2026 · github.com/rahatislamanik-spec</div>
+  </div>
 </footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
 
 </body>
 </html>
