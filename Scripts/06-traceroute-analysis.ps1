@@ -1,9 +1,12 @@
-# Enterprise IT Network Diagnostics Toolkit
-# Script 06: Traceroute Analysis
-# Author: Md Rahat Islam Anik
-# Platform: macOS (PowerShell 7+)
-# Description: Traces the network path to key destinations, reports hop-by-hop
-#   latency, identifies timeouts/failures — exports a clean HTML report.
+<#
+.SYNOPSIS
+    Script 06: Traceroute Analysis
+.DESCRIPTION
+    Traces the network path to key destinations, reports hop-by-hop latency, identifies timeouts/failures — exports a clean HTML report.
+.NOTES
+    Author: Md Rahat Islam Anik
+    Platform: macOS (PowerShell 7+)
+#>
 
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host "  Enterprise IT Network Diagnostics Toolkit " -ForegroundColor Cyan

@@ -1,9 +1,12 @@
-# Enterprise IT Network Diagnostics Toolkit
-# Script 08: Latency Baseline & Jitter Analysis
-# Author: Md Rahat Islam Anik
-# Platform: macOS (PowerShell 7+)
-# Description: Sends extended ping bursts to multiple targets, calculates
-#   min/max/avg latency, jitter, and packet loss — exports a clean HTML report.
+<#
+.SYNOPSIS
+    Script 08: Latency Baseline & Jitter Analysis
+.DESCRIPTION
+    Sends extended ping bursts to multiple targets, calculates min/max/avg latency, jitter, and packet loss — exports a clean HTML report.
+.NOTES
+    Author: Md Rahat Islam Anik
+    Platform: macOS (PowerShell 7+)
+#>
 
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host "  Enterprise IT Network Diagnostics Toolkit " -ForegroundColor Cyan

@@ -1,9 +1,12 @@
-# Enterprise IT Network Diagnostics Toolkit
-# Script 07: SSL/TLS Certificate Check
-# Author: Md Rahat Islam Anik
-# Platform: macOS (PowerShell 7+)
-# Description: Checks SSL/TLS certificates for key domains — expiry dates,
-#   issuer, subject, protocol version — flags certificates expiring within 30 days.
+<#
+.SYNOPSIS
+    Script 07: SSL/TLS Certificate Check
+.DESCRIPTION
+    Checks SSL/TLS certificates for key domains — expiry dates, issuer, subject, protocol version — flags certificates expiring within 30 days.
+.NOTES
+    Author: Md Rahat Islam Anik
+    Platform: macOS (PowerShell 7+)
+#>
 
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host "  Enterprise IT Network Diagnostics Toolkit " -ForegroundColor Cyan

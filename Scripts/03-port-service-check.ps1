@@ -1,9 +1,12 @@
-# Enterprise IT Network Diagnostics Toolkit
-# Script 03: Port & Service Availability Check
-# Author: Md Rahat Islam Anik
-# Platform: macOS (PowerShell 7+)
-# Description: Tests reachability of critical enterprise service ports across
-#   key hosts — exports a clean HTML report for escalation and ticket documentation.
+<#
+.SYNOPSIS
+    Script 03: Port & Service Availability Check
+.DESCRIPTION
+    Tests reachability of critical enterprise service ports across key hosts — exports a clean HTML report for escalation and ticket documentation.
+.NOTES
+    Author: Md Rahat Islam Anik
+    Platform: macOS (PowerShell 7+)
+#>
 
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host "  Enterprise IT Network Diagnostics Toolkit " -ForegroundColor Cyan

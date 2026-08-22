@@ -1,9 +1,12 @@
-# Enterprise IT Network Diagnostics Toolkit
-# Script 05: Network Adapter Health
-# Author: Md Rahat Islam Anik
-# Platform: macOS (PowerShell 7+)
-# Description: Enumerates all network interfaces, reports IP/MAC/MTU/status,
-#   flags inactive or misconfigured adapters — exports a clean HTML report.
+<#
+.SYNOPSIS
+    Script 05: Network Adapter Health
+.DESCRIPTION
+    Enumerates all network interfaces, reports IP/MAC/MTU/status, flags inactive or misconfigured adapters — exports a clean HTML report.
+.NOTES
+    Author: Md Rahat Islam Anik
+    Platform: macOS (PowerShell 7+)
+#>
 
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host "  Enterprise IT Network Diagnostics Toolkit " -ForegroundColor Cyan

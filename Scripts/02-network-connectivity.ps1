@@ -1,9 +1,12 @@
-# Enterprise IT Network Diagnostics Toolkit
-# Script 02: Network Connectivity Check
-# Author: Md Rahat Islam Anik
-# Platform: macOS (PowerShell 7+)
-# Description: Tests gateway reachability, internet connectivity, packet loss,
-#   and latency to key public hosts — exports a clean HTML diagnostic report.
+<#
+.SYNOPSIS
+    Script 02: Network Connectivity Check
+.DESCRIPTION
+    Tests gateway reachability, internet connectivity, packet loss, and latency to key public hosts — exports a clean HTML diagnostic report.
+.NOTES
+    Author: Md Rahat Islam Anik
+    Platform: macOS (PowerShell 7+)
+#>
 
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host "  Enterprise IT Network Diagnostics Toolkit " -ForegroundColor Cyan

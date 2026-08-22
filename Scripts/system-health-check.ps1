@@ -1,10 +1,12 @@
-# Enterprise IT Health Check Toolkit
-# Script: System Health Check & HTML Report Generator
-# Author: Md Rahat Islam Anik
-# Platform: macOS (PowerShell 7+)
-# Description: Collects system diagnostics — hostname, OS version, disk usage,
-#   network configuration, and connectivity — then exports a clean HTML report
-#   ready for ticket documentation, escalation notes, or IT audit evidence.
+<#
+.SYNOPSIS
+    Script: System Health Check & HTML Report Generator
+.DESCRIPTION
+    Collects system diagnostics — hostname, OS version, disk usage, network configuration, and connectivity — then exports a clean HTML report ready for ticket documentation, escalation notes, or IT audit evidence.
+.NOTES
+    Author: Md Rahat Islam Anik
+    Platform: macOS (PowerShell 7+)
+#>
 
 Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host " Enterprise IT Health Check Toolkit  " -ForegroundColor Cyan

@@ -1,9 +1,12 @@
-# Enterprise IT Network Diagnostics Toolkit
-# Script 04: Wi-Fi Diagnostics
-# Author: Md Rahat Islam Anik
-# Platform: macOS (PowerShell 7+)
-# Description: Captures Wi-Fi adapter details, SSID, signal strength, channel,
-#   security type, and connection quality — exports a clean HTML report.
+<#
+.SYNOPSIS
+    Script 04: Wi-Fi Diagnostics
+.DESCRIPTION
+    Captures Wi-Fi adapter details, SSID, signal strength, channel, security type, and connection quality — exports a clean HTML report.
+.NOTES
+    Author: Md Rahat Islam Anik
+    Platform: macOS (PowerShell 7+)
+#>
 
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host "  Enterprise IT Network Diagnostics Toolkit " -ForegroundColor Cyan

@@ -1,9 +1,12 @@
-# Enterprise IT Network Diagnostics Toolkit
-# Script 01: DNS Diagnostics
-# Author: Md Rahat Islam Anik
-# Platform: macOS (PowerShell 7+)
-# Description: Resolves multiple domains, checks system DNS servers, detects failures,
-#   performs reverse lookups, and exports a clean HTML diagnostic report.
+<#
+.SYNOPSIS
+    Script 01: DNS Diagnostics
+.DESCRIPTION
+    Resolves multiple domains, checks system DNS servers, detects failures, performs reverse lookups, and exports a clean HTML diagnostic report.
+.NOTES
+    Author: Md Rahat Islam Anik
+    Platform: macOS (PowerShell 7+)
+#>
 
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host "  Enterprise IT Network Diagnostics Toolkit " -ForegroundColor Cyan
