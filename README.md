@@ -1,5 +1,5 @@
 # Enterprise IT Network Diagnostics Toolkit
-> **Status:** Portfolio Complete — v1.0
+> **Status:** Version 1
 
 ### PowerShell · Network Diagnostics · Security Auditing · HTML Reporting · macOS · Git
 
@@ -11,20 +11,17 @@
 
 ---
 
-| 9 PowerShell Scripts | 8 Retained HTML Reports | 27 Diagnostic Files | 26 Screenshots |
-|:---:|:---:|:---:|:---:|
+Nine PowerShell scripts that run structured network diagnostics on macOS and generate self-contained HTML reports for ticket documentation.
 
 ---
 
 ## The Problem
 
-Network issues account for the majority of IT helpdesk tickets. Without structured diagnostics, technicians run commands one by one — results scattered, nothing documented, nothing repeatable.
+Network issues are a large share of IT helpdesk tickets. Without structured diagnostics, technicians run commands one by one — results scattered, nothing documented, nothing repeatable.
 
 **Manual checks waste time.** Ad-hoc troubleshooting creates inconsistency and slows down triage.
 
 **Reports make support visible.** Clean HTML output creates evidence for tickets, escalation notes, and future comparison.
-
-**Automation shows maturity.** This toolkit demonstrates the mindset of an IT specialist who builds repeatable processes — not just reacts to incidents.
 
 **Security auditing is proactive.** ARP-based device review and port checks help identify unknown devices and suspicious exposure during authorized troubleshooting.
 
@@ -32,7 +29,7 @@ Network issues account for the majority of IT helpdesk tickets. Without structur
 
 ## The Solution
 
-A multi-script PowerShell diagnostic toolkit that runs structured network assessments and produces professional HTML reports — ready for ticket documentation, escalation, or handoff.
+A multi-script PowerShell diagnostic toolkit that runs structured network assessments and produces self-contained HTML reports — ready for ticket documentation, escalation, or handoff.
 
 ![Network Troubleshooting Flow](docs/images/network-troubleshooting-flow.svg)
 
@@ -70,13 +67,13 @@ Security audit           Port Scanning                Documentation ready
 | 08 | `08-latency-baseline.ps1` | Extended ping, jitter, packet loss %, RTT sparklines |
 | 09 | `system-health-check.ps1` | Hostname, OS version, disk usage, IP, DNS, ping test |
 
-All scripts run on **macOS PowerShell 7+** and generate **professional HTML reports**.
+All scripts run on **macOS PowerShell 7+** and generate self-contained HTML reports.
 
 ---
 
-## Sample Outputs (27 Files)
+## Sample Outputs
 
-Real diagnostic data collected from a live network environment — sanitized for privacy.
+Diagnostic data collected from an authorized lab/home network environment — sanitized for privacy.
 
 For a phase-by-phase review, see [`docs/evidence-map.md`](docs/evidence-map.md).
 
@@ -88,7 +85,11 @@ For a phase-by-phase review, see [`docs/evidence-map.md`](docs/evidence-map.md).
 
 **Protocol Statistics:** `tcp-ip-statistics.txt` · `multicast-groups.txt` · `active-connections.txt`
 
-**Security Audits:** `rogue-device-report.txt` · `rogue-detection.txt` · `rogue-devices-arp.txt` · `mac-vendor-lookup.txt` · `gateway-port-scan.txt` · `network-scan.txt` · `all-network-devices.txt` · `active-network-devices.txt` · `mac-addresses.txt` · `port-53-test.txt` · `broadcast-devices.txt` · `nmap-device-discovery.txt`
+### Manual Security-Audit Evidence
+
+The following outputs were captured from **ad-hoc security-audit commands run manually** (`arp`, `nmap`, device discovery) on the same authorized lab/home network — they are retained as evidence, and are **not** produced by the nine diagnostic scripts above.
+
+`rogue-device-report.txt` · `rogue-detection.txt` · `rogue-devices-arp.txt` · `mac-vendor-lookup.txt` · `gateway-port-scan.txt` · `network-scan.txt` · `all-network-devices.txt` · `active-network-devices.txt` · `mac-addresses.txt` · `port-53-test.txt` · `broadcast-devices.txt` · `nmap-device-discovery.txt`
 
 ---
 
@@ -100,16 +101,15 @@ For a phase-by-phase review, see [`docs/evidence-map.md`](docs/evidence-map.md).
 | Platform | macOS-focused implementation using native macOS networking tools |
 | Reporting | HTML file output (self-contained) |
 | Network Tools | ping · traceroute · ifconfig · arp · nc · dig · nslookup · nmap |
-| Security | ARP monitoring · MAC vendor lookup · authorized port checking |
+| Security (manual) | Ad-hoc ARP review · MAC vendor lookup · `nmap` discovery — run manually, not scripted |
 | Version Control | Git · GitHub |
 | Deployment | GitHub Pages |
-| Cost | $0 |
 
 ---
 
 ## Skills Demonstrated
 
-`PowerShell Scripting` · `Network Diagnostics` · `DNS Troubleshooting` · `Port Checking` · `Wi-Fi Analysis` · `SSL/TLS Certificate Management` · `Latency & Jitter Analysis` · `ARP Device Review` · `ARP Monitoring` · `MAC Vendor Lookup` · `HTML Report Generation` · `Git Version Control` · `IT Support Documentation` · `Security Triage` · `macOS Automation`
+`PowerShell Scripting` · `Network Diagnostics` · `DNS Troubleshooting` · `SSL/TLS Certificate Checks` · `Latency & Jitter Analysis` · `Manual Security Triage (ARP/nmap)` · `HTML Report Generation` · `macOS Automation`
 
 ---
 
@@ -131,7 +131,7 @@ For a phase-by-phase review, see [`docs/evidence-map.md`](docs/evidence-map.md).
 ## Author
 
 **Md Rahat Islam Anik**
-IT Systems Administrator · Network Diagnostics · PowerShell Automation
+Systems Administrator · Network Diagnostics · PowerShell Automation
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/rahatislamanik)
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-181717?style=flat&logo=github)](https://github.com/rahatislamanik-spec)
