@@ -29,5 +29,5 @@ This map connects the toolkit scripts to retained reports, sample outputs, scree
 
 - Retained outputs include private lab/home network values to preserve authentic troubleshooting evidence.
 - No production customer data, passwords, API keys, access tokens, or credentials are intentionally included.
-- Port checks, ARP review, device discovery, and `nmap` output should only be used on authorized networks.
+- The ARP review, device discovery, and `nmap` outputs in `Sample-Outputs/` were produced by **manual commands, not the nine scripts**; like any scanning tool they should only be used on networks you are authorized to audit.
 - Current scripts are macOS-focused because several commands depend on macOS-native tools.

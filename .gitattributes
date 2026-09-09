@@ -1,0 +1,5 @@
+# Language stats: HTML in this repo is generated diagnostic reports and
+# portfolio presentation, not application code. Exclude it from GitHub
+# Linguist so the language bar reflects the PowerShell diagnostic scripts.
+
+*.html linguist-documentation
